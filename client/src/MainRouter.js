@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 
@@ -13,16 +13,14 @@ const MainRouter = () => (
                     <header className="App-header">
                         <img src={logo} className="App-logo" alt="logo" />
                         <p>
-                            Edit <code>src/App.js</code> and save to reload.
+                            GT Web Dev Home
                         </p>
-                        <a
-                            className="App-link"
-                            href="https://reactjs.org"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Learn React
-                        </a>
+                        <p>
+                            This is home - navigate to other routes to see a different page
+                        </p>
+                        <p>
+                            For example see <Link to="/schedule">Schedule Page</Link>
+                        </p>
                     </header>
                 </div>
             </Route>
