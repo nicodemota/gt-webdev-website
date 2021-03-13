@@ -5,7 +5,7 @@ class BottomBar extends Component {
     render() {
         return (
             <div>
-                This is a bar that goes at the bottom
+                This will be a bar that goes at the bottom
             </div>
         );
     }
