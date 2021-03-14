@@ -9,7 +9,7 @@ class NavBar extends Component {
     render() {
         return (
             <div>
-                <AppBar position="static">
+                <AppBar position="static" class="nav-bar">
                     <Toolbar>
                         <Typography variant="h6">
                             GT WebDev

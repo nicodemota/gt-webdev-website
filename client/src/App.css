@@ -7,6 +7,18 @@
   pointer-events: none;
 }
 
+.nav-bar {
+  background-color: #242424;
+  color: white;
+}
+
+.intro-box {
+  background-color: #242424;
+  color: white;
+  text-align: center;
+  height: 200px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
