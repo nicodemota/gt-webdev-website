@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import NavBar from "./NavBar";
 import BottomBar from "./BottomBar";
 import {Link} from "react-router-dom";
+import Typography from '@material-ui/core/Typography';
 import './../App.css';
 
 class Home extends Component {
@@ -23,8 +24,8 @@ class IntroBox extends Component {
     render() {
         return (
             <div class="intro-box">
-                <h1>GT WebDev</h1>
-                <p>Some description for the organization</p> 
+                <Typography variant="h1">GT WebDev</Typography>
+                <Typography variant="p">Some description for the organization</Typography>
             </div>
         );
     }
@@ -34,8 +35,8 @@ class AboutUs extends Component {
     render() {
         return (
         <div>
-            <h2>About Us</h2>
-            <p>At GT WebDev, we...</p>
+            <Typography variant="h3">About Us</Typography>
+            <Typography variant="p">At GT WebDev, we...</Typography>
         </div>
         );
     }
@@ -45,7 +46,7 @@ class FAQ extends Component {
     render() {
         return (
             <div>
-                <h2>FAQ</h2>
+                <Typography variant="h3">FAQ</Typography>
                 <QuestAndAnswer question="Question 1?" answer="Answer 1" />
                 <QuestAndAnswer question="Question 2?" answer="Answer 2" />
             </div>
@@ -65,8 +66,8 @@ class QuestAndAnswer extends Component {
     render() {
         return (
             <div>
-                <p>{this.state.question}</p>
-                <p>{this.state.answer}</p>
+                <Typography variant="p">{this.state.question}</Typography>
+                <Typography variant="p">{this.state.answer}</Typography>
             </div>
         )
     }
@@ -76,7 +77,7 @@ class MeetMembers extends Component {
     render() {
         return (
             <div>
-                <h2>Meet Our Members</h2>
+                <Typography variant="h3">Meet Our Members</Typography>
                 <MemberBox name="Person One"
                     title="Member"
                     imageURL="google.com"
@@ -101,8 +102,8 @@ class MemberBox extends Component {
         return (
             <div>
                 *some image*
-                <p><b>{this.state.name}</b>, {this.state.title}</p>
-                <p>{this.state.description}</p>
+                <Typography variant="p"><b>{this.state.name}</b>, {this.state.title}</Typography>
+                <Typography variant="p">{this.state.description}</Typography>
             </div>
         );
     }
