@@ -9,11 +9,9 @@ class NavBar extends Component {
     render() {
         return (
             <div>
-                <AppBar position="static" class="nav-bar">
+                <AppBar position="static" class="nav-bar overlay">
                     <Toolbar>
-                        <Typography variant="h6">
-                            GT WebDev
-                        </Typography>
+                        <img src="gt-webdev-logo.png" alt="GT WebDev" height="35"/>
                         <Button color="inherit" href="/">Home</Button>
                         <Button color="inherit" href="/schedule">Schedule</Button>
                         <Button color="inherit" href="/join">Join</Button>

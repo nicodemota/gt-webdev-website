@@ -8,7 +8,9 @@ class Projects extends Component {
         return (
             <div>
                 <NavBar />
-                <div>Projects</div>
+                <div class="main">
+                    Projects
+                </div>
                 <BottomBar />
             </div>
         );

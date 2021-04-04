@@ -12,11 +12,15 @@
   color: white;
 }
 
+.main {
+  padding: 10px 15px;
+}
+
 .intro-box {
   background-color: #242424;
   color: white;
   text-align: center;
-  height: 200px;
+  height: 170px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -8,7 +8,9 @@ class Contact extends Component {
         return (
             <div>
                 <NavBar />
-                <div>Contact</div>
+                <div class="main">
+                    Contact
+                </div>
                 <BottomBar />
             </div>
         );

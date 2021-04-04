@@ -16,10 +16,14 @@ class Schedule extends Component {
         return (
             <div>
                 <NavBar />
-                <Typography variant="h5">Where We Meet</Typography>
-                <Typography variant="p">We meet in...</Typography>
-                <Typography variant="h5">Schedule</Typography>
-                <SchedTable />
+                <div class="main">
+                    <Typography variant="h5">Where We Meet</Typography>
+                    <Typography variant="p">We meet in...</Typography>
+                    <br />
+                    <br />
+                    <Typography variant="h5">Schedule</Typography>
+                    <SchedTable />
+                </div>
                 <BottomBar />
             </div>
         );
@@ -35,19 +39,49 @@ class SchedTable extends Component {
                 "recording": "google.com"
             },
             {
+                "meetingDate": "2/2/2021",
+                "agenda": "Project meetings, HTML/CSS tutorial",
+                "recording": "?"
+            },
+            {
+                "meetingDate": "2/9/2021",
+                "agenda": "Project meetings",
+                "recording": "?"
+            },
+            {
                 "meetingDate": "2/16/2021",
-                "agenda": "Project Meeting, JavaScript Tutorial",
-                "recording": "google.com"
+                "agenda": "Project meeting, JavaScript tutorial",
+                "recording": "https://bluejeans.com/s/MEG0MozyCbi/"
             },
             {
                 "meetingDate": "2/23/2021",
-                "agenda": "Project Meeting, React.js Tutorial",
-                "recording": "google.com"
+                "agenda": "Project meeting, React.js tutorial",
+                "recording": "https://bluejeans.com/s/1nPn4Nu6Kb3/"
             },
             {
-                "meetingDate": "3/02/2021",
-                "agenda": "Project Meeting, React.js Tutorial",
-                "recording": "google.com"
+                "meetingDate": "3/2/2021",
+                "agenda": "Project meeting, Node and Express.js tutorial",
+                "recording": "https://bluejeans.com/s/QVR3gAXDOXn/"
+            },
+            {
+                "meetingDate": "3/9/2021",
+                "agenda": "Project meeting, MongoDB tutorial",
+                "recording": "?"
+            },
+            {
+                "meetingDate": "3/23/2021",
+                "agenda": "Project meeting, Material-UI tutorial",
+                "recording": "?"
+            },
+            {
+                "meetingDate": "3/30/2021",
+                "agenda": "Project meeting, Git/GitHub tutorial",
+                "recording": "?"
+            },
+            {
+                "meetingDate": "4/6/2021",
+                "agenda": "Project meeting, Python Flask tutorial",
+                "recording": "?"
             }
         ];
         return (
