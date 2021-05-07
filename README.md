@@ -6,13 +6,11 @@ https://nodejs.org/en/
 Clone Repo
 ```
 git clone https://github.com/gt-webdev/gt-webdev-website
-cd gt-webdev-website (new repo folder)
-cd client (frontend)
 ```
 Starting app
 ```
 npm install (installs node modules we need)
-npm start
+npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
