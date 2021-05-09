@@ -3,6 +3,8 @@ import NavBar from "../components/NavBar";
 import BottomBar from "../components/BottomBar";
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import {slogan, aboutUs, qAndAs, members} from '../data/homeData.js';
 
 class Home extends Component {
   render() {
@@ -10,7 +12,7 @@ class Home extends Component {
           <div>
               <NavBar />
               <IntroBox />
-              <div class="main">
+              <div className="main">
                   <AboutUs />
                   <br />
                   <FAQ />
@@ -26,10 +28,10 @@ class Home extends Component {
 class IntroBox extends Component {
   render() {
       return (
-          <div class="intro-box">
+          <div className="intro-box">
               <Typography variant="h1" style={{ fontWeight: 400 }}>GT WebDev</Typography>
-              <Typography variant="p">
-                  Fostering the learning of web development framework by framework
+              <Typography variant="body1">
+                  { slogan }
               </Typography>
           </div>
       );
@@ -41,14 +43,7 @@ class AboutUs extends Component {
       return (
           <div>
               <Typography variant="h4">About Us</Typography>
-              <Typography variant="p">
-                  At GT WebDev, we learn about different web development languages, technologies, and frameworks,
-                  as well as how they work in combination with each other. Learning is done with a hybrid of both
-                  a traditional, demo-style approach and an interactive, hands-on approach. For the former, we have
-                  weekly tutorials on web development technologies like Node.js, MongoDB, and React.js. For the latter,
-                  we have project teams in which members can practice their newly-learned skills into nice, working (ideally)
-                  web applications.
-              </Typography>
+              <Typography variant="body1" className="indented">{aboutUs}</Typography>
           </div>
       );
   }
@@ -57,12 +52,12 @@ class AboutUs extends Component {
 class FAQ extends Component {
   render() {
       return (
-          <div>
-              <Typography variant="h4">FAQ</Typography>
-              <QuestAndAnswer question="What if I want to join GT WebDev, but am unavailable during the scheduled meeting time?" answer="No worries! All of our meetings and tutorials are recorded and can be found on the Schedule tab of this website, as well as in the Slack." />
-              <QuestAndAnswer question="How do I join?" answer="Check out the Join page of this website for more information!" />
-              <QuestAndAnswer question="Will GT WebDev be in-person or virtual for the fall?" answer="TBD" />
-          </div>
+        <div>
+            <Typography variant="h4">FAQ</Typography>
+            {qAndAs.map(elem => (
+                <QuestAndAnswer question={elem.question} answer={elem.answer}/>
+            ))}
+        </div>
       );
   }
 }
@@ -78,15 +73,13 @@ class QuestAndAnswer extends Component {
 
   render() {
       return (
-          <div class="qanda">
-              <Typography variant="p">
+          <div className="indented">
+              <Typography variant="body1" fontWeight={600}>
                 <Box fontWeight={600}>
-                  {this.state.question}
+                    {this.state.question}
                 </Box>
               </Typography>
-              <br />
-              <Typography variant="p">{this.state.answer}</Typography>
-              <br />
+              <Typography variant="body1">{this.state.answer}</Typography>
           </div>
       )
   }
@@ -97,11 +90,13 @@ class MeetMembers extends Component {
       return (
           <div>
               <Typography variant="h4">Meet Our Members</Typography>
-              <MemberBox name="Bek Hovakimian"
-                  title="President"
-                  imageURL="google.com"
-                  description="Bek is..."
-              />
+              <div className="indented">
+                <Grid container spacing={3}>
+                    {members.map(member => (
+                        <MemberBox name={member.name} title={member.title} imageURL={member.imageURL} description={member.description} />
+                    ))}
+                </Grid>
+              </div>
           </div>
       );
   }
@@ -119,14 +114,11 @@ class MemberBox extends Component {
   }
   render() {
       return (
-          <div>
-              *some image*
-              <br />
-              <Typography variant="p"><b>{this.state.name}</b>, {this.state.title}</Typography>
-              <br />
-              <Typography variant="p">{this.state.description}</Typography>
-              <br />
-          </div>
+            <Grid item xs={4} className="centered">
+              <img className="memberImg" src={this.state.imageURL} alt="well that didn't work"/>
+              <Typography variant="body1"><b>{this.state.name}</b>, {this.state.title}</Typography>
+              <Typography variant="body1">{this.state.description}</Typography>
+            </Grid>
       );
   }
 }
