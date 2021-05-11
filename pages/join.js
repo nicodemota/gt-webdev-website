@@ -13,10 +13,10 @@ class Join extends Component {
             <div>
                 <NavBar />
                 <div class="main">
-                    <Typography variant="h5">Join</Typography>
-                    <Typography variant="body1">Fill out the form below to join GT WebDev!</Typography>
-                    <br />
-                    <form noValidate autoComplete="off">
+                    <Typography variant="h4">Join</Typography>
+                    <form noValidate autoComplete="off" className="indented">
+                        <Typography variant="body1">Fill out the form below to join GT WebDev!</Typography>
+                        <br />
                         <TextField id="filled-basic" label="First Name" variant="filled" />
                         <br />
                         <br />

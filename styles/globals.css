@@ -89,3 +89,7 @@ a {
 .padRight {
   padding-right: 10px;
 }
+
+.emailBox {
+  width: 100%;
+}
