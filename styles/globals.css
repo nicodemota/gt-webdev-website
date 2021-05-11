@@ -57,10 +57,35 @@ a {
   padding: 10px 15px;
 }
 
+.tab {
+  padding-left: 10px;
+}
+
 .centered {
   text-align: center;
 }
 
 .memberImg {
   width: 100%;
+}
+
+.schedTableHeader {
+  background-color: #242424;
+}
+
+.schedTableRow {
+  background-color: #666666;
+}
+
+.schedTableCell {
+  color: white !important;
+}
+
+.hearDropDown {
+  width: 200px;
+  text-align: center;
+}
+
+.padRight {
+  padding-right: 10px;
 }

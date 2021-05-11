@@ -9,6 +9,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import {makeStyles} from '@material-ui/core/styles';
 import {meetData, scheduleData} from '../data/scheduleData.js';
 
 class Schedule extends Component {
@@ -17,11 +18,11 @@ class Schedule extends Component {
             <div>
                 <NavBar />
                 <div class="main">
-                    <Typography variant="h5">Where We Meet</Typography>
-                    <Typography variant="body1">{meetData}</Typography>
+                    <Typography variant="h4">Where We Meet</Typography>
+                    <Typography className="indented" variant="body1">{meetData}</Typography>
                     <br />
                     <br />
-                    <Typography variant="h5">Schedule</Typography>
+                    <Typography variant="h4">Schedule</Typography>
                     <SchedTable />
                 </div>
                 <BottomBar />
@@ -36,18 +37,18 @@ class SchedTable extends Component {
             <TableContainer component={Paper}>
                 <Table>
                     <TableHead>
-                        <TableRow>
-                            <TableCell align="center">Meeting Date</TableCell>
-                            <TableCell align="center">Agenda</TableCell>
-                            <TableCell align="center">BlueJeans Link</TableCell>
+                        <TableRow className="schedTableHeader">
+                            <TableCell align="center" className="schedTableCell">Meeting Date</TableCell>
+                            <TableCell align="center" className="schedTableCell">Agenda</TableCell>
+                            <TableCell align="center" className="schedTableCell">BlueJeans Link</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                     {scheduleData.map(row => (
-                        <TableRow key={row.name}>
-                            <TableCell align="center">{row.date}</TableCell>
-                            <TableCell align="center">{row.agenda}</TableCell>
-                            <TableCell align="center">{row.link}</TableCell>
+                        <TableRow key={row.name} className="schedTableRow">
+                            <TableCell align="center" className="schedTableCell">{row.date}</TableCell>
+                            <TableCell align="center" className="schedTableCell">{row.agenda}</TableCell>
+                            <TableCell align="center" className="schedTableCell">{row.link}</TableCell>
                         </TableRow>
                     ))}
                     </TableBody>
