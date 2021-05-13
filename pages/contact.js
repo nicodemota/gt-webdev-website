@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
 
 class Contact extends Component {
     render() {
@@ -39,10 +40,11 @@ class AdminContact extends Component {
         }
     }
     render() {
+        let emailLink = "mailto:" + this.state.email;
         return (
             <Grid item xs={4} className="centered">
                 <Typography variant="body1">{this.state.name}, <b>{this.state.title}</b></Typography>
-                <Typography variant="body1">{this.state.email}</Typography>
+                <Link href={emailLink}>{this.state.email}</Link>
             </Grid>
         );
     }
@@ -52,7 +54,7 @@ class AskQuestion extends Component {
     render() {
         return (
             <div>
-                <Typography variant="h4">Ask GT WebDev a Question</Typography>
+                <Typography variant="h4">Ask GT WebDev a Message</Typography>
                 <form noValidate autoComplete="off" className="indented">
                     <TextField id="filled-basic" label="Name" variant="filled" />
                     <br />
@@ -60,7 +62,7 @@ class AskQuestion extends Component {
                     <TextField id="filled-basic" label="Email" variant="filled" />
                     <br />
                     <br />
-                    <TextField id="filled-basic" label="Content" variant="filled" className="emailBox" />
+                    <TextField id="filled-basic" label="Message" variant="filled" className="emailBox" />
                     <br />
                     <br />
                     <Button variant="contained" color="primary" type="submit">Send Message</Button>
