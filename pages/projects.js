@@ -10,7 +10,7 @@ class Projects extends Component {
         return (
             <div>
                 <NavBar />
-                <div class="main">
+                <div className="main">
                     <CurrentProjects />
                     <br />
                     <PreviousProjects />
@@ -25,7 +25,7 @@ class CurrentProjects extends Component {
     render() {
         return (
             <div>
-                <Typography variant="h4">Current Projects</Typography>
+                <Typography variant="h4" className="title">current projects</Typography>
                 <Typography variant="body1" className="indented">
                     {currentData}
                 </Typography>
@@ -38,7 +38,7 @@ class PreviousProjects extends Component {
     render() {
         return (
             <div>
-                <Typography variant="h4">Previous Projects</Typography>
+                <Typography variant="h4" className="title">previous projects</Typography>
                     {previousData.map(semester => (
                         <div className="indented">
                             <Typography variant="h6">{semester.semester}</Typography>

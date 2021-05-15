@@ -9,6 +9,12 @@ const theme = createMuiTheme({
     secondary: {
       main: '#ffffff'
     }
+  },
+  typography: {
+    fontFamily: [
+      'Exo 2',
+      'sans-serif'
+    ].join(',')
   }
 });
 

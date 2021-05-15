@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400&display=swap');
+
 html,
 body {
   background-color: #e5e5e5;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Exo 2', sans-serif;
 }
 
 a {
@@ -29,21 +31,23 @@ a {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  font-family: 'Bitter', serif !important;
 }
 
 .main {
   padding: 10px 15px;
+}
+
+.mainTitle {
+  color: #f0cd42;
+  font-family: 'Bitter', serif !important;
+  padding-bottom: 10px;
+}
+
+.title, .schedLabel {
+  font-family: 'Bitter', serif !important;
 }
 
 .intro-box {
@@ -77,8 +81,16 @@ a {
   background-color: #666666;
 }
 
+.schedHeaderCell {
+  color: #f0cd42 !important;
+}
+
 .schedTableCell {
   color: white !important;
+}
+
+.schedLabel {
+  padding-bottom: 10px;
 }
 
 .hearDropDown {
@@ -92,4 +104,29 @@ a {
 
 .emailBox {
   width: 100%;
+}
+
+.adminContactTitle {
+  padding-top: 10px;
+}
+
+.homeImg {
+  width: 47%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+.mainContactImg {
+  width: 80px;
+}
+
+#mainContactContainer {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#happyKoala {
+  width: 300px;
 }

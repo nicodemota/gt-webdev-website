@@ -29,7 +29,7 @@ class IntroBox extends Component {
   render() {
       return (
           <div className="intro-box">
-              <Typography variant="h1" style={{ fontWeight: 400 }}>GT WebDev</Typography>
+              <Typography variant="h1" className="mainTitle">gt webdev</Typography>
               <Typography variant="body1">
                   { slogan }
               </Typography>
@@ -42,8 +42,12 @@ class AboutUs extends Component {
   render() {
       return (
           <div>
-              <Typography variant="h4">About Us</Typography>
-              <Typography variant="body1" className="indented">{aboutUs}</Typography>
+                <Typography variant="h4" className="title">about us</Typography>
+                <div className="centered">
+                    <img src="homeImageOne.jpg" className="homeImg" />
+                    <img src="homeImageTwo.jpg" className="homeImg" />
+                </div>
+                <Typography variant="body1" className="indented">{aboutUs}</Typography>
           </div>
       );
   }
@@ -53,7 +57,7 @@ class FAQ extends Component {
   render() {
       return (
         <div>
-            <Typography variant="h4">FAQ</Typography>
+            <Typography variant="h4" className="title">faq</Typography>
             {qAndAs.map(elem => (
                 <QuestAndAnswer question={elem.question} answer={elem.answer}/>
             ))}
@@ -78,8 +82,8 @@ class QuestAndAnswer extends Component {
                 <Box fontWeight={600}>
                     {this.state.question}
                 </Box>
+                {this.state.answer}
               </Typography>
-              <Typography variant="body1">{this.state.answer}</Typography>
           </div>
       )
   }
@@ -89,7 +93,7 @@ class MeetMembers extends Component {
   render() {
       return (
           <div>
-              <Typography variant="h4">Meet Our Members</Typography>
+              <Typography variant="h4" className="title">meet our members</Typography>
               <div className="indented">
                 <Grid container spacing={3}>
                     {members.map(member => (

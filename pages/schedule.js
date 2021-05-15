@@ -9,7 +9,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import {makeStyles} from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 import {meetData, scheduleData} from '../data/scheduleData.js';
 
 class Schedule extends Component {
@@ -17,12 +17,12 @@ class Schedule extends Component {
         return (
             <div>
                 <NavBar />
-                <div class="main">
-                    <Typography variant="h4">Where We Meet</Typography>
+                <div className="main">
+                    <Typography variant="h4" className="title">where we meet</Typography>
                     <Typography className="indented" variant="body1">{meetData}</Typography>
                     <br />
                     <br />
-                    <Typography variant="h4">Schedule</Typography>
+                    <Typography variant="h4" className="schedLabel">schedule</Typography>
                     <SchedTable />
                 </div>
                 <BottomBar />
@@ -38,9 +38,15 @@ class SchedTable extends Component {
                 <Table>
                     <TableHead>
                         <TableRow className="schedTableHeader">
-                            <TableCell align="center" className="schedTableCell">Meeting Date</TableCell>
-                            <TableCell align="center" className="schedTableCell">Agenda</TableCell>
-                            <TableCell align="center" className="schedTableCell">BlueJeans Link</TableCell>
+                            <TableCell align="center" className="schedHeaderCell">
+                                <Box fontWeight={600} fontSize={16}>Meeting Date</Box>
+                            </TableCell>
+                            <TableCell align="center" className="schedHeaderCell">
+                                <Box fontWeight={600} fontSize={16}>Agenda</Box>
+                            </TableCell>
+                            <TableCell align="center" className="schedHeaderCell">
+                                <Box fontWeight={600} fontSize={16}>BlueJeans Link</Box>
+                            </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
