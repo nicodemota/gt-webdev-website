@@ -1,4 +1,6 @@
 import {emailIsValid} from "../../helpers/emailHelpers.js";
+import connectDB from '../../middleware/connectDB.js';
+import User from '../../models/user';
 
 /*
     API Route: /api/joinClub
@@ -8,7 +10,7 @@ import {emailIsValid} from "../../helpers/emailHelpers.js";
         email (required): the email of the new member
         contactPoint (required): how the new member heard of GT WebDev
 */
-export default (req, res) => {
+const handler = async (req, res) => {
     if (req.method == "POST") {
         let body = req.body;
         if (!body.firstName) {
@@ -26,9 +28,18 @@ export default (req, res) => {
             console.log("Last Name: " + body.lastName);
             console.log("Email: " + body.email);
             console.log("Contact Point: " + body.contactPoint);
-            res.status(200).json({result: "Successfully joined club"});
+            let user = new User(body);
+            user.save((err, result) => {
+                if (err) {
+                    return res.status(400).json({result: err.message});
+                }
+
+                return res.status(200).json({result: "Successfully joined club"});
+            });
         }
     } else {
         res.status(400).json({result: "Failure - HTTP method type not allowed"});
     }
 }
+
+export default connectDB(handler);
