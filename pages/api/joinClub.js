@@ -1,6 +1,16 @@
 import {emailIsValid} from "../../helpers/emailHelpers.js";
 import connectDB from '../../middleware/connectDB.js';
 import User from '../../models/user';
+const API_KEY = process.env.EMAIL_API_KEY;
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(API_KEY);
+
+const message = {
+    to: 'gtwebdevclub@gmail.com',
+    from: 'gtwebdevclub@gmail.com',
+    templateId: 'd-d84bfb4a02604407928a2c72825ccb28',
+    dynamic_template_data: {}
+};
 
 /*
     API Route: /api/joinClub
@@ -24,16 +34,22 @@ const handler = async (req, res) => {
         } else if (!body.contactPoint) {
             res.status(400).json({result: "Failure - Contact point field is required"});
         } else {
-            console.log("First Name: " + body.firstName);
-            console.log("Last Name: " + body.lastName);
-            console.log("Email: " + body.email);
-            console.log("Contact Point: " + body.contactPoint);
             let user = new User(body);
             user.save((err, result) => {
                 if (err) {
                     return res.status(400).json({result: err.message});
                 }
-
+                message.dynamic_template_data = {
+                    firstName: body.firstName,
+                    lastName: body.lastName,
+                    email: body.email,
+                    contactPoint: body.contactPoint
+                };
+                try {
+                    sgMail.send(message);
+                } catch (err) {
+                    console.log(err);
+                }
                 return res.status(200).json({result: "Successfully joined club"});
             });
         }
