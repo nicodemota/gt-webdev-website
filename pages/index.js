@@ -33,6 +33,9 @@ class IntroBox extends Component {
               <Typography variant="body1">
                   { slogan }
               </Typography>
+              <Typography variant="body2">
+                  (Under Construction)
+              </Typography>
           </div>
       );
   }
