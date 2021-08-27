@@ -96,7 +96,7 @@ class MeetMembers extends Component {
               <Typography variant="h4" className="title">meet our members</Typography>
               <div className="indented">
                 <Grid container spacing={3}>
-                    Under Contruction
+                    Under Construction
                     {/* {members.map(member => (
                         <MemberBox name={member.name} title={member.title} imageURL={member.imageURL} description={member.description} />
                     ))} */}
