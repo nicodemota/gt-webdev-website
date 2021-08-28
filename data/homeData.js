@@ -14,7 +14,11 @@ let qAndAs = [
     {
         "question": "Will GT WebDev be in-person or virtual for the fall?",
         "answer": "We're not completely sure yet, but we'll keep you posted!"
-    }
+    },
+    {
+        "question": "What is the format of the meetings?",
+        "answer": "Meetings typically consist of project team meetings with a tutorial (a new topic every week) right after. We also have guest speakers come throughout different points in the semester to talk about certain web dev topics and share experiences from their company."
+    },
 ];
 
 let members = [

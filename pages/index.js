@@ -33,6 +33,9 @@ class IntroBox extends Component {
               <Typography variant="body1">
                   { slogan }
               </Typography>
+              <Typography variant="body2">
+                  (Under Construction)
+              </Typography>
           </div>
       );
   }
@@ -96,9 +99,10 @@ class MeetMembers extends Component {
               <Typography variant="h4" className="title">meet our members</Typography>
               <div className="indented">
                 <Grid container spacing={3}>
-                    {members.map(member => (
+                    Under Construction
+                    {/* {members.map(member => (
                         <MemberBox name={member.name} title={member.title} imageURL={member.imageURL} description={member.description} />
-                    ))}
+                    ))} */}
                 </Grid>
               </div>
           </div>

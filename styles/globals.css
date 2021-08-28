@@ -54,7 +54,7 @@ a {
   background-color: #242424;
   color: white;
   text-align: center;
-  height: 170px;
+  padding-bottom: 25px;
 }
 
 .indented {
