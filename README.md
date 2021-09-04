@@ -1,5 +1,5 @@
 ### GT Web Dev Website
-Repo for new GT Web Dev website (Spring 2021) <br>
+Repo for new GT Web Dev website <br>
 Download Node.js (LTS is fine)
 https://nodejs.org/en/
 
