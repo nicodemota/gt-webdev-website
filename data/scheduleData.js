@@ -3,52 +3,62 @@ let meetData = "We meet every Tuesday from 6:30 P.M. to around 7:30 P.M. Atlanta
 let scheduleData = [
     {
         "date": "9/7/2021",
-        "agenda": "First Meeting and Club Overview",
-        "link": "TBD"
+        "agenda": "GT Web Dev Informational First Meeting",
+        "link": "https://bluejeans.com/s/PeGi_DZQlgf"
     },
     {
         "date": "9/14/2021",
-        "agenda": "Form Project Teams & HTML/CSS tutorial",
-        "link": "TBD"
+        "agenda": "Project Teams Informational Meeting",
+        "link": "https://bluejeans.com/s/iiUsOHmHNeP"
     },
     {
         "date": "9/21/2021",
-        "agenda": "Project meetings & JavaScript tutorial",
-        "link": "TBD"
+        "agenda": "HTML & CSS Tutorial",
+        "link": "https://bluejeans.com/s/48qzZ6kYvLD"
     },
     {
         "date": "9/28/2021",
-        "agenda": "Project meetings & React.js tutorial",
+        "agenda": "Project Teams Introduction",
+        "link": "https://bluejeans.com/s/bnVtDv1xRO6"
+    },
+    {
+        "date": "10/5/2021",
+        "agenda": "ES6 Javascript Tutorial",
+        "link": "https://bluejeans.com/s/mu0OYGFJIE3"
+    },
+    {
+        "date": "10/14/2021",
+        "agenda": "React Tutorial",
         "link": "TBD"
     },
     {
-        "date": "10/4/2021",
-        "agenda": "Project meetings & Node and Express.js tutorial",
+        "date": "10/26/2021",
+        "agenda": "Git Tutorial",
         "link": "TBD"
     },
     {
-        "date": "10/11/2021",
-        "agenda": "Project meetings & MongoDB tutorial",
+        "date": "11/2/2021",
+        "agenda": "Node Express Tutorial",
         "link": "TBD"
     },
     {
-        "date": "10/18/2021",
-        "agenda": "Project meetings & Material-UI tutorial",
+        "date": "11/9/2021",
+        "agenda": "Speaker: Jason Park",
         "link": "TBD"
     },
     {
-        "date": "10/25/2021",
-        "agenda": "Project meeting & Git/GitHub tutorial",
+        "date": "11/16/2021",
+        "agenda": "TBD",
         "link": "TBD"
     },
     {
-        "date": "11/1/2021",
-        "agenda": "Project meeting & Python Flask tutorial",
+        "date": "11/23/2021",
+        "agenda": "TBD",
         "link": "TBD"
     },
     {
-        "date": "11/8/2021",
-        "agenda": "Project meeting & Next.js tutorial",
+        "date": "11/30/2021",
+        "agenda": "TBD",
         "link": "TBD"
     }
 ];

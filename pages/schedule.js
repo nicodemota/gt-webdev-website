@@ -45,7 +45,7 @@ class SchedTable extends Component {
                                 <Box fontWeight={600} fontSize={16}>Agenda</Box>
                             </TableCell>
                             <TableCell align="center" className="schedHeaderCell">
-                                <Box fontWeight={600} fontSize={16}>BlueJeans Link</Box>
+                                <Box fontWeight={600} fontSize={16}>Recording</Box>
                             </TableCell>
                         </TableRow>
                     </TableHead>
@@ -54,7 +54,9 @@ class SchedTable extends Component {
                         <TableRow key={row.name} className="schedTableRow">
                             <TableCell align="center" className="schedTableCell">{row.date}</TableCell>
                             <TableCell align="center" className="schedTableCell">{row.agenda}</TableCell>
-                            <TableCell align="center" className="schedTableCell">{row.link}</TableCell>
+                            <TableCell align="center" className="schedTableCell">
+                                {row.link === "TBD" ? "TBD" : <a href={row.link}>Here</a>}
+                            </TableCell>
                         </TableRow>
                     ))}
                     </TableBody>
