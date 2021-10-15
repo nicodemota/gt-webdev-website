@@ -7,7 +7,7 @@
 .env
 
 #next
-./next
+./.next
 
 # lock files
 package-lock.json

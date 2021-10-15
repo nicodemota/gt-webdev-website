@@ -29,7 +29,7 @@ let scheduleData = [
     {
         "date": "10/14/2021",
         "agenda": "React Tutorial",
-        "link": "TBD"
+        "link": "https://bluejeans.com/playback/s/HIRYwIbyW8pR9VBFrdS8jUnxrn0GkkBsn5L3BesvKcnmaHIwctNeqvDC9xJy9n3y"
     },
     {
         "date": "10/26/2021",
