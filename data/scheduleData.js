@@ -34,7 +34,8 @@ let scheduleData = [
     {
         "date": "10/26/2021",
         "agenda": "Git Tutorial",
-        "link": "TBD"
+        "link": "https://drive.google.com/file/d/13cB0epGo0RIQKayNfhHgbjM9XmZpl_Y_/view?usp=sharing",
+        "link2": "https://drive.google.com/file/d/1q8L6D3Q73KouWMIsWw3m3o2qkq_u6jsi/view?usp=sharing"
     },
     {
         "date": "11/2/2021",
