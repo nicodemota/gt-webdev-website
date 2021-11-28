@@ -12,16 +12,16 @@ class Home extends Component {
       return (
           <div>
                 <Head>
-                    <title>GT Web Dev | Georgia Tech</title>
+                    <title>GT WebDev | Georgia Tech</title>
                     <meta name="description" content="At GT WebDev, we learn about different web development languages, technologies, and frameworks, as well as how they work in combination with each other. Learning is done with a hybrid of both a traditional, demo-style approach and an interactive, hands-on approach. For the former, we have weekly tutorials on web development technologies like Node.js, MongoDB, and React.js. For the latter, we have project teams in which members can practice their newly-learned skills into nice, (ideally) working web applications." />
 
-                    <meta property="og:title" content="GT Web Dev | Georgia Tech" />
+                    <meta property="og:title" content="GT WebDev | Georgia Tech" />
                     <meta property="og:description" content="At GT WebDev, we learn about different web development languages, technologies, and frameworks, as well as how they work in combination with each other. Learning is done with a hybrid of both a traditional, demo-style approach and an interactive, hands-on approach. For the former, we have weekly tutorials on web development technologies like Node.js, MongoDB, and React.js. For the latter, we have project teams in which members can practice their newly-learned skills into nice, (ideally) working web applications." />  
                     <meta property="og:site_name" content="GT Web Dev" />
                     <meta property="og:type" content="website" />
                     <meta property="og:url" content={`${process.env.NEXT_PUBLIC_BASE_URL}`} />
                     <meta property="og:image" content={`${process.env.NEXT_PUBLIC_BASE_URL}/gt-webdev-logo.png`} />
-                    <meta property="og:image:alt" content="GT Web Dev logo" />
+                    <meta property="og:image:alt" content="GT WebDev logo" />
                     <meta property="og:locale" content="en_US" />
 
                     <meta property="twitter:card" content="summary_large_image" />
