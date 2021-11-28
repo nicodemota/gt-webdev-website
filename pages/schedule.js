@@ -55,11 +55,11 @@ class SchedTable extends Component {
                             <TableCell align="center" className="schedTableCell">{row.date}</TableCell>
                             <TableCell align="center" className="schedTableCell">{row.agenda}</TableCell>
                             <TableCell align="center" className="schedTableCell">
-                                {row.link === "TBD" ? "TBD" 
+                                {(row.link === "TBD" || row.link === "N/A") ? row.link
                                 : 
                                     <>
-                                        <a href={row.link} style={{ display: "block" }}>Here</a>
-                                        {row.link2 ? <a href={row.link2} style={{ display: "block" }}>Here</a> : ""}
+                                        <a href={row.link} style={{ display: "block" }} target="_blank">Here</a>
+                                        {row.link2 ? <a href={row.link2} style={{ display: "block" }} target="_blank">Here</a> : ""}
                                     </>
                                 }
                             </TableCell>

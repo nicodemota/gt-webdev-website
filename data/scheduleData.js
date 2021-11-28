@@ -40,26 +40,17 @@ let scheduleData = [
     {
         "date": "11/2/2021",
         "agenda": "Node Express Tutorial",
-        "link": "TBD"
+        "link": "https://drive.google.com/file/d/1O7PhdUbBz4VXlT8LBrDNlfp01I9pY-Pe/view?usp=sharing",
+        "link2": "https://drive.google.com/file/d/1SuJmMWBqOyuMo1YDEPj0KQJorkTTv1gs/view?usp=sharing"
     },
     {
         "date": "11/9/2021",
         "agenda": "Speaker: Jason Park",
-        "link": "TBD"
-    },
-    {
-        "date": "11/16/2021",
-        "agenda": "TBD",
-        "link": "TBD"
-    },
-    {
-        "date": "11/23/2021",
-        "agenda": "TBD",
-        "link": "TBD"
+        "link": "N/A"
     },
     {
         "date": "11/30/2021",
-        "agenda": "TBD",
+        "agenda": "Speaker: Zach Panzarino",
         "link": "TBD"
     }
 ];
