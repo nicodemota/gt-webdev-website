@@ -27,7 +27,7 @@ class Join extends Component {
     }
 
     callAPI = () => {
-        let url = process.env.NEXT_PUBLIC_BASE_URL + 'api/joinClub';
+        let url = process.env.NEXT_PUBLIC_BASE_URL + '/api/joinClub';
         //let url = "http://localhost:3000/api/joinClub";
         return axios.post(url, {
             "firstName": this.state.firstName,
