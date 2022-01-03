@@ -6,6 +6,7 @@ body {
   background-color: #e5e5e5;
   margin: 0;
   font-family: 'Exo 2', sans-serif;
+  overflow: auto;
 }
 
 a {
@@ -51,7 +52,7 @@ a {
 }
 
 .intro-box {
-  background-color: #242424;
+  background-color: #222220;
   color: white;
   text-align: center;
   padding-bottom: 25px;
@@ -74,7 +75,7 @@ a {
 }
 
 .schedTableHeader {
-  background-color: #242424;
+  background-color: #222220;
 }
 
 .schedTableRow {
