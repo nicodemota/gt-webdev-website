@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
+import Head from 'next/head'
 const axios = require("axios");
 
 class Contact extends Component {
@@ -63,6 +64,9 @@ class Contact extends Component {
             <AskQuestion handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
         return (
             <div>
+                <Head>
+                    <title>Contact | GT WebDev</title>
+                </Head>
                 <NavBar />
                 <div className="main">
                     <MainContact />
@@ -87,20 +91,20 @@ class MainContact extends Component {
         return (
             <div>
                 <Typography variant="h4" className="title">organization contact information</Typography>
-                <Grid container id="mainContactContainer">
-                    <Grid item xs={4}>
+                <Grid container id="mainContactContainer" spacing={2}>
+                    <Grid item xs={12} md={4}>
                         <Link href="mailto:gtwebdevclub@gmail.com">
                             <img src="mailIcon.png" className="mainContactImg"></img>
                             <Typography variant="body1">gtwebdevclub@gmail.com</Typography>
                         </Link>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} md={4}>
                         <Link href="https://www.facebook.com/GtWebdev/">
                             <img src="facebookIcon.png" className="mainContactImg"></img>
                             <Typography variant="body1">facebook.com/GtWebdev/</Typography>
                         </Link>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} md={4}>
                         <Link href="https://bit.ly/joingtwebdev">
                             <img src="slackIcon.png" className="mainContactImg"></img>
                             <Typography variant="body1">Join Our Slack Here!</Typography>
@@ -124,7 +128,7 @@ class AdminContact extends Component {
     render() {
         let emailLink = "mailto:" + this.state.email;
         return (
-            <Grid item xs={4} className="centered">
+            <Grid item xs={12} md={4}>
                 <Typography variant="body1">{this.state.name}, <b>{this.state.title}</b></Typography>
                 <Link href={emailLink}>{this.state.email}</Link>
             </Grid>

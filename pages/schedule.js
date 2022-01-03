@@ -10,12 +10,16 @@ import TableHead from '@material-ui/core/TableHead';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Head from 'next/head'
 import {meetData, scheduleData} from '../data/scheduleData.js';
 
 class Schedule extends Component {
     render() {
         return (
             <div>
+                <Head>
+                    <title>Schedule | GT WebDev</title>
+                </Head>
                 <NavBar />
                 <div className="main">
                     <Typography variant="h4" className="title">where we meet</Typography>

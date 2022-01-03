@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
+import Head from 'next/head'
 const axios = require("axios");
 
 class Join extends Component {
@@ -67,6 +68,9 @@ class Join extends Component {
             <Form handleChange={this.handleChange} handleSubmit={this.handleSubmit} />;
         return (
             <div>
+                <Head>
+                    <title>Join | GT WebDev</title>
+                </Head>
                 <NavBar />
                 <div className="main">
                     <Typography variant="h4" className="title">join</Typography>

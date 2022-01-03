@@ -4,11 +4,15 @@ import {currentData,previousData} from '../data/projectData.js';
 import BottomBar from "../components/BottomBar";
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import Head from 'next/head'
 
 class Projects extends Component {
     render() {
         return (
             <div>
+                <Head>
+                    <title>Projects | GT WebDev</title>
+                </Head>
                 <NavBar />
                 <div className="main">
                     <CurrentProjects />
