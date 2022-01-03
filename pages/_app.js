@@ -4,7 +4,7 @@ import '../styles/globals.css';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#242424'
+      main: "#222220"
     },
     secondary: {
       main: '#ffffff'
