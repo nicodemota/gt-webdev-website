@@ -6,7 +6,8 @@ import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
-import Head from 'next/head'
+import Head from 'next/head';
+import Link from '@material-ui/core/Link';
 const axios = require("axios");
 
 class Join extends Component {
@@ -72,11 +73,20 @@ class Join extends Component {
                     <title>Join | GT WebDev</title>
                 </Head>
                 <NavBar />
-                <div className="main">
+                {/* <div className="main">
                     <Typography variant="h4" className="title">join</Typography>
                     {body}
                 </div>
-                <BottomBar />
+                <BottomBar /> */}
+                <div className="main">
+                    <Typography variant="h4" className="title">how to join</Typography>
+                    <Typography variant="body1">
+                        You can join GT WebDev by joining our Discord at this link:&nbsp;
+                        <Link href="https://discord.gg/BbykvvQmGz">
+                            https://discord.gg/BbykvvQmGz
+                        </Link>
+                    </Typography>
+                </div>
             </div>
         );
     }

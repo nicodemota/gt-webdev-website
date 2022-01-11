@@ -77,8 +77,8 @@ class Contact extends Component {
                         ))}
                     </Grid>
                     <br />
-                    <Typography variant="h4" className="title">send gt webdev a message</Typography>
-                    {questionBody}
+                    {/* <Typography variant="h4" className="title">send gt webdev a message</Typography>
+                    {questionBody} */}
                 </div>
                 <BottomBar />
             </div>
@@ -93,6 +93,12 @@ class MainContact extends Component {
                 <Typography variant="h4" className="title">organization contact information</Typography>
                 <Grid container id="mainContactContainer" spacing={2}>
                     <Grid item xs={12} md={4}>
+                        <Link href="https://discord.gg/BbykvvQmGz">
+                            <img src="discordIcon.png" className="mainContactImg"></img>
+                            <Typography variant="body1">Join Our Discord Here!</Typography>
+                        </Link>
+                    </Grid>
+                    <Grid item xs={12} md={4}>
                         <Link href="mailto:gtwebdevclub@gmail.com">
                             <img src="mailIcon.png" className="mainContactImg"></img>
                             <Typography variant="body1">gtwebdevclub@gmail.com</Typography>
@@ -102,12 +108,6 @@ class MainContact extends Component {
                         <Link href="https://www.facebook.com/GtWebdev/">
                             <img src="facebookIcon.png" className="mainContactImg"></img>
                             <Typography variant="body1">facebook.com/GtWebdev/</Typography>
-                        </Link>
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                        <Link href="https://bit.ly/joingtwebdev">
-                            <img src="slackIcon.png" className="mainContactImg"></img>
-                            <Typography variant="body1">Join Our Slack Here!</Typography>
                         </Link>
                     </Grid>
                 </Grid>
@@ -129,8 +129,10 @@ class AdminContact extends Component {
         let emailLink = "mailto:" + this.state.email;
         return (
             <Grid item xs={12} md={4}>
-                <Typography variant="body1">{this.state.name}, <b>{this.state.title}</b></Typography>
-                <Link href={emailLink}>{this.state.email}</Link>
+                <div className="centered">
+                    <Typography variant="body1">{this.state.name}, <b>{this.state.title}</b></Typography>
+                    <Link href={emailLink}>{this.state.email}</Link>
+                </div>
             </Grid>
         );
     }

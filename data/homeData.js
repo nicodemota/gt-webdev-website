@@ -5,19 +5,19 @@ let aboutUs = "At GT WebDev, we learn about different web development languages,
 let qAndAs = [
     {
         "question": "What if I want to join GT WebDev, but am unavailable during the scheduled meeting time?",
-        "answer": "No worries! All of our meetings and tutorials are recorded and can be found on the Schedule tab of this website, as well as in the Slack."
+        "answer": "No worries! All of our meetings and tutorials are recorded and can be found on the Schedule tab of this website, as well as in the Discord."
     },
     {
         "question": "How do I join?",
-        "answer": "Check out the Join page of this website for more information!"
+        "answer": "Join our Discord, which you can find in the Join page!"
     },
     {
-        "question": "Will GT WebDev be in-person or virtual for the fall?",
-        "answer": "We're not completely sure yet, but we'll keep you posted!"
+        "question": "Are there any dues/fees for the club?",
+        "answer": "Absolutely not! It is always free to partake in GT WebDev :)"
     },
     {
-        "question": "What is the format of the meetings?",
-        "answer": "Meetings typically consist of project team meetings with a tutorial (a new topic every week) right after. We also have guest speakers come throughout different points in the semester to talk about certain web dev topics and share experiences from their company."
+        "question": "Do I have to have any experience to join the club?",
+        "answer": "Nope! There are no requirements other than that you are a student at Georgia Tech"
     },
 ];
 
