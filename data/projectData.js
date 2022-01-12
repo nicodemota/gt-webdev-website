@@ -2,16 +2,71 @@ let currentData = "We'll keep you posted with any projects as the semester nears
 
 let previousData = [
     {
+        "semester": "Fall 2021",
+        "projects": [
+            {
+                "name": "Spotify Analytics Tool",
+                "description": "A tool similar to Spotify Wrapped used to analyze and show trends in people's Spotify listening data",
+                "manager": "Vignesh Sreedhar",
+                "members": []
+            },
+            {
+                "name": "Data Converter",
+                "description": "A web application to convert between different files types, such as between PNG and PDF",
+                "manager": "Stephen Buckley",
+                "members": []
+            },
+            {
+                "name": "Real-Time Chat",
+                "description": "A website that fosters 1-1 and group conversation with real-time updates",
+                "manager": "Deepak Ramalingam",
+                "members": []
+            },
+            {
+                "name": "Browser Game",
+                "description": "An in-browser game in which a player moves around and avoids obstacles",
+                "manager": "Deepak Ramalingam",
+                "members": []
+            },
+            {
+                "name": "Protest Website",
+                "description": "A social-media-like portal in which people can plan and join protests",
+                "manager": "Jin Park",
+                "members": []
+            },
+            {
+                "name": "Essay Dashboard",
+                "description": "A web application that shows examples of essays and related academic content",
+                "manager": "Pranay Shah",
+                "members": []
+            },
+            {
+                "name": "Cryptocurrency Portfolio Dashboard",
+                "description": "A web application to visualize and track cryptocurrency holdings",
+                "manager": "Talia Tian",
+                "members": []
+            },
+            {
+                "name": "Cryptocurrency Exchange",
+                "description": "A tool to make exchanges between different forms of cryptocurrency",
+                "manager": "Bek Hovakimian",
+                "members": []
+            }
+        ]
+    },
+    {
         "semester": "Spring 2021",
         "projects": [
             {
                 "name": "GT WebDev Website",
-                "description": "Over the fall, the planning process and skeleton of this website was created through one of the projects.",
+                "description": "This very website! Most of the architecture and planning was done",
+                "manager": "Stephen Buckley",
                 "members": ["Stephen Buckley", "Zhao Chen"]
             },
             {
                 "name": "Internship Tracker",
-                "description": "This project was a tool used to track internship applications and their statuses.",
+                "description": "A tool to track a student's internship applications and their statuses",
+                "manager": "Dane Koval",
                 "members": ["Dane Koval", "Jason Jiang"]
             }
         ]

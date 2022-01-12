@@ -48,7 +48,8 @@ class PreviousProjects extends Component {
                             <Typography variant="h6">{semester.semester}</Typography>
                             <Grid container spacing={3}>
                                 {semester.projects.map(project => (
-                                    <Project name={project.name} description={project.description} members={project.members} />
+                                    <Project name={project.name} description={project.description}
+                                      members={project.members} manager={project.manager} />
                                 ))}
                             </Grid>
                         </div>
@@ -64,6 +65,7 @@ class Project extends Component {
         this.state = {
             "name": this.props.name,
             "description": this.props.description,
+            "manager": this.props.manager,
             "members": this.props.members
         }
     }
@@ -74,7 +76,8 @@ class Project extends Component {
                 <div className="tab">
                     <Typography variant="body1"><b>{this.state.name}</b></Typography>
                     <Typography variant="body1">{this.state.description}</Typography>
-                    <Typography variant="body1">Members: {memberList}</Typography>
+                    <Typography variant="body1">Manager: {this.state.manager}</Typography>
+                    {/* <Typography variant="body1">Members: {memberList}</Typography> */}
                 </div>
             </Grid>
         );
