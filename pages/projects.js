@@ -30,16 +30,24 @@ class CurrentProjects extends Component {
         return (
             <div>
                 <Typography variant="h4" className="title">current projects</Typography>
-                <Typography variant="body1" className="indented">
-                    {currentData}
-                </Typography>
+                    {currentData.map(semester => (
+                        <div className="indented1">
+                            <Typography variant="h6">{semester.semester}</Typography>
+                            <Grid container spacing={3}>
+                                {semester.projects.map(project => (
+                                    <Project name={project.name} description={project.description}
+                                      members={project.members} manager={project.manager} />
+                                ))}
+                            </Grid>
+                        </div>
+                    ))}
             </div>
         );
     }
 }
 
 class PreviousProjects extends Component {
-    render() {
+    render() { 
         return (
             <div>
                 <Typography variant="h4" className="title">previous projects</Typography>

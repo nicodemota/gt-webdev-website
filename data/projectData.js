@@ -1,4 +1,64 @@
-let currentData = "We'll keep you posted with any projects as the semester nears!";
+let currentData = [
+    {
+        "semester": "Spring 2022",
+        "projects": [
+            {
+                "name": "YouTube to Spotify",
+                "description": "A tool that converts Youtube playlists to Spotify playlists",
+                "manager": "Vignesh Sreedhar",
+                "members": [],
+            },
+            {
+                "name": "COVID-19 Data Visualizer",
+                "description": "A web application to visualize COVID-19 data",
+                "manager": "Stephen Buckley",
+                "members": [],
+            },
+            {
+                "name": "Video Chat",
+                "description": "A web application version of Zoom",
+                "manager": "Deepak Ramalingam",
+                "members": [],
+            },
+            {
+                "name": "Video Chat",
+                "description": "A web application version of Zoom",
+                "manager": "Deepak Ramalingam",
+                "members": [],
+            },
+            {
+                "name": "Classic Board Game",
+                "description": "Implements a classic board game in the browser like tictactoe, checkers, and chess",
+                "manager": "Talia Tian",
+                "members": [],
+            },
+            {
+                "name": "Essay Tools Dashboard",
+                "description": "A tool to help users to better write essays",
+                "manager": "Jakob Bjorner",
+                "members": [],
+            },
+            {
+                "name": "Essay Tools Dashboard",
+                "description": "A tool to help users to better write essays",
+                "manager": "Jakob Bjorner",
+                "members": [],
+            },
+            {
+                "name": "Protest Website",
+                "description": "A website for students to create and find protests anonymously",
+                "manager": "Jinwoo Park",
+                "members": [],
+            },
+            {
+                "name": "Valorant Sharing Site",
+                "description": "Website to share gaming related media",
+                "manager": "Jacob Amin",
+                "members": [],
+            },
+        ]
+    }
+];
 
 let previousData = [
     {
