@@ -2,57 +2,110 @@ let meetData = "We meet every Tuesday from 6:30 P.M. to around 7:30 P.M. Atlanta
 
 let scheduleData = [
     {
-        "date": "9/7/2021",
-        "agenda": "GT Web Dev Informational First Meeting",
-        "link": "https://bluejeans.com/s/PeGi_DZQlgf"
+        "date": "1/13/2022",
+        "agenda": "Officer Form Due at 11:59 P.M.",
+        "link": "https://bluejeans.com/170486711/7660"
     },
     {
-        "date": "9/14/2021",
+        "date": "1/18/2022",
         "agenda": "Project Teams Informational Meeting",
-        "link": "https://bluejeans.com/s/iiUsOHmHNeP"
+        "link": "https://bluejeans.com/170486711/7660"
     },
     {
-        "date": "9/21/2021",
-        "agenda": "HTML & CSS Tutorial",
-        "link": "https://bluejeans.com/s/48qzZ6kYvLD"
+        "date": "1/21/2022",
+        "agenda": "Project Signup Form Due at 11:59 P.M.",
+        "link": "https://bluejeans.com/170486711/7660"
     },
     {
-        "date": "9/28/2021",
-        "agenda": "Project Teams Introduction",
-        "link": "https://bluejeans.com/s/bnVtDv1xRO6"
+        "date": "1/25/2022",
+        "agenda": "First Project Meeting, Introduce Project Iteration #1",
+        "link": "https://bluejeans.com/170486711/7660"
     },
     {
-        "date": "10/5/2021",
-        "agenda": "ES6 Javascript Tutorial",
-        "link": "https://bluejeans.com/s/mu0OYGFJIE3"
+        "date": "2/1/2022",
+        "agenda": "Project Check-up",
+        "link": "https://bluejeans.com/170486711/7660"
     },
     {
-        "date": "10/14/2021",
-        "agenda": "React Tutorial",
-        "link": "https://bluejeans.com/playback/s/HIRYwIbyW8pR9VBFrdS8jUnxrn0GkkBsn5L3BesvKcnmaHIwctNeqvDC9xJy9n3y"
+        "date": "2/3/2022",
+        "agenda": "How to Build Personal Website Workshop",
+        "link": "https://bluejeans.com/s/GMYpuHlIqOh"
     },
     {
-        "date": "10/26/2021",
-        "agenda": "Git Tutorial",
-        "link": "https://drive.google.com/file/d/13cB0epGo0RIQKayNfhHgbjM9XmZpl_Y_/view?usp=sharing",
-        "link2": "https://drive.google.com/file/d/1q8L6D3Q73KouWMIsWw3m3o2qkq_u6jsi/view?usp=sharing"
+        "date": "2/8/2022",
+        "agenda": "Project Iteration #1 Due, Introduce Iteration #2",
+        "link": "https://bluejeans.com/170486711/7660",
     },
     {
-        "date": "11/2/2021",
-        "agenda": "Node Express Tutorial",
-        "link": "https://drive.google.com/file/d/1O7PhdUbBz4VXlT8LBrDNlfp01I9pY-Pe/view?usp=sharing",
-        "link2": "https://drive.google.com/file/d/1SuJmMWBqOyuMo1YDEPj0KQJorkTTv1gs/view?usp=sharing"
+        "date": "2/15/2022",
+        "agenda": "Project Check-up",
+        "link": "https://bluejeans.com/170486711/7660",
     },
     {
-        "date": "11/9/2021",
-        "agenda": "Speaker: Jason Park",
-        "link": "N/A"
+        "date": "2/17/2022",
+        "agenda": "Technical Interview Workshop",
+        "link": "https://bluejeans.com/570397287/6155"
     },
     {
-        "date": "11/30/2021",
-        "agenda": "Speaker: Zach Panzarino",
-        "link": "TBD"
-    }
+        "date": "2/22/2022",
+        "agenda": "Project Iteration #2 Due, Introduce Iteration #3",
+        "link": "https://bluejeans.com/170486711/7660"
+    },
+    {
+        "date": "2/24/2022",
+        "agenda": "Apollo/GraphQL Workshop",
+        "link": "https://bluejeans.com/570397287/6155"
+    },
+    {
+        "date": "3/1/2022",
+        "agenda": "Project Check Up",
+        "link": "https://bluejeans.com/170486711/7660"
+    },
+    {
+        "date": "3/3/2022",
+        "agenda": "Agency Collaboration",
+        "link": "https://bluejeans.com/170486711/7660"
+    },
+    {
+        "date": "3/8/2022",
+        "agenda": "Agency Collaboration",
+        "link": "Project Iteration #3 Due, Introduce Iteration #4"
+    },
+    {
+        "date": "3/15/2022",
+        "agenda": "Mid-Semester Project Checkup",
+        "link": "https://bluejeans.com/170486711/7660"
+    },
+    {
+        "date": "3/29/2022",
+        "agenda": "Project Iteration #4 Due, Introduce Iteration #5",
+        "link": "https://bluejeans.com/170486711/7660"
+    },
+    {
+        "date": "4/5/2022",
+        "agenda": "Project Check-up",
+        "link": "https://bluejeans.com/170486711/7660"
+    },
+    {
+        "date": "4/7/2022",
+        "agenda": "Mini Hackathon",
+        "link": "https://bluejeans.com/170486711/7660"
+    },
+    {
+        "date": "4/12/2022",
+        "agenda": "Project Iteration #5 Due, Introduce Iteration #6 + presentation",
+        "link": "https://bluejeans.com/170486711/7660"
+    },
+    {
+        "date": "4/19/2022",
+        "agenda": "Project Check-up",
+        "link": "https://bluejeans.com/170486711/7660"
+    },
+    {
+        "date": "4/26/2022",
+        "agenda": "Project Showcase",
+        "link": "https://bluejeans.com/170486711/7660"
+    },
 ];
 
 let spring2021ScheduleData = [
