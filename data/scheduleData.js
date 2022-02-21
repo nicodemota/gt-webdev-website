@@ -4,107 +4,107 @@ let scheduleData = [
     {
         "date": "1/13/2022",
         "agenda": "Officer Form Due at 11:59 P.M.",
-        "link": "https://bluejeans.com/170486711/7660"
+        "link": "N/A"
     },
     {
         "date": "1/18/2022",
         "agenda": "Project Teams Informational Meeting",
-        "link": "https://bluejeans.com/170486711/7660"
+        "link": "https://bluejeans.com/s/K1cE129@jLr/"
     },
     {
         "date": "1/21/2022",
         "agenda": "Project Signup Form Due at 11:59 P.M.",
-        "link": "https://bluejeans.com/170486711/7660"
+        "link": "N/A"
     },
     {
         "date": "1/25/2022",
         "agenda": "First Project Meeting, Introduce Project Iteration #1",
-        "link": "https://bluejeans.com/170486711/7660"
+        "link": "N/A"
     },
     {
         "date": "2/1/2022",
         "agenda": "Project Check-up",
-        "link": "https://bluejeans.com/170486711/7660"
+        "link": "N/A"
     },
     {
         "date": "2/3/2022",
-        "agenda": "How to Build Personal Website Workshop",
+        "agenda": "How to Build Personal Website Workshop with Women at CoC",
         "link": "https://bluejeans.com/s/GMYpuHlIqOh"
     },
     {
         "date": "2/8/2022",
         "agenda": "Project Iteration #1 Due, Introduce Iteration #2",
-        "link": "https://bluejeans.com/170486711/7660",
+        "link": "N/A",
     },
     {
         "date": "2/15/2022",
         "agenda": "Project Check-up",
-        "link": "https://bluejeans.com/170486711/7660",
+        "link": "N/A",
     },
     {
         "date": "2/17/2022",
         "agenda": "Technical Interview Workshop",
-        "link": "https://bluejeans.com/570397287/6155"
+        "link": "https://bluejeans.com/s/sISTLV9lSFA"
     },
     {
         "date": "2/22/2022",
         "agenda": "Project Iteration #2 Due, Introduce Iteration #3",
-        "link": "https://bluejeans.com/170486711/7660"
+        "link": "N/A"
     },
     {
         "date": "2/24/2022",
         "agenda": "Apollo/GraphQL Workshop",
-        "link": "https://bluejeans.com/570397287/6155"
+        "link": "N/A"
     },
     {
         "date": "3/1/2022",
         "agenda": "Project Check Up",
-        "link": "https://bluejeans.com/170486711/7660"
+        "link": "N/A"
     },
     {
         "date": "3/3/2022",
         "agenda": "Agency Collaboration",
-        "link": "https://bluejeans.com/170486711/7660"
+        "link": "N/A"
     },
     {
         "date": "3/8/2022",
         "agenda": "Agency Collaboration",
-        "link": "Project Iteration #3 Due, Introduce Iteration #4"
+        "link": "N/A"
     },
     {
         "date": "3/15/2022",
         "agenda": "Mid-Semester Project Checkup",
-        "link": "https://bluejeans.com/170486711/7660"
+        "link": "N/A"
     },
     {
         "date": "3/29/2022",
         "agenda": "Project Iteration #4 Due, Introduce Iteration #5",
-        "link": "https://bluejeans.com/170486711/7660"
+        "link": "N/A"
     },
     {
         "date": "4/5/2022",
         "agenda": "Project Check-up",
-        "link": "https://bluejeans.com/170486711/7660"
+        "link": "N/A"
     },
     {
         "date": "4/7/2022",
         "agenda": "Mini Hackathon",
-        "link": "https://bluejeans.com/170486711/7660"
+        "link": "N/A"
     },
     {
         "date": "4/12/2022",
         "agenda": "Project Iteration #5 Due, Introduce Iteration #6 + presentation",
-        "link": "https://bluejeans.com/170486711/7660"
+        "link": "N/A"
     },
     {
         "date": "4/19/2022",
         "agenda": "Project Check-up",
-        "link": "https://bluejeans.com/170486711/7660"
+        "link": "N/A"
     },
     {
         "date": "4/26/2022",
         "agenda": "Project Showcase",
-        "link": "https://bluejeans.com/170486711/7660"
+        "link": "N/A"
     },
 ];
 
