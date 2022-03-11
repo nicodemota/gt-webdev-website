@@ -79,12 +79,19 @@ class Join extends Component {
                 </div>
                 <BottomBar /> */}
                 <div className="main">
-                    <Typography variant="h4" className="title">how to join</Typography>
+                    <Typography variant="h4" className="title1">how to join</Typography>
                     <Typography variant="body1">
                         You can join GT WebDev by joining our Discord at this link:&nbsp;
                         <Link href="https://discord.gg/BbykvvQmGz">
                             https://discord.gg/BbykvvQmGz
                         </Link>
+                    </Typography>
+                    <br />
+                    <br />
+                    <Typography variant="h4" className="title2">where do we meet</Typography>
+                    <Typography variant="body1">Our project teams meet every Tuesday from 6:30 P.M. to around 7:30 P.M. Atlanta time in CCB (College of Computing Building) 102. 
+                        <br />
+                        The time and place for our events and workshops vary, but they will typically take place on Thursdays at 6:30 P.M.
                     </Typography>
                 </div>
             </div>

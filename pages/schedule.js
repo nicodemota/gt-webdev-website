@@ -22,10 +22,6 @@ class Schedule extends Component {
                 </Head>
                 <NavBar />
                 <div className="main">
-                    <Typography variant="h4" className="title">where we meet</Typography>
-                    <Typography className="indented" variant="body1">{meetData}</Typography>
-                    <br />
-                    <br />
                     <Typography variant="h4" className="schedLabel">schedule</Typography>
                     <SchedTable />
                 </div>
