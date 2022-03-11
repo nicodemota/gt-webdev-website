@@ -1,6 +1,6 @@
 let slogan = "Fostering the learning of web development framework by framework";
 
-let aboutUs = "At GT WebDev, we learn about different web development languages, technologies, and frameworks, as well as how they work in combination with each other. Learning is done with a hybrid of both a traditional, demo-style approach and an interactive, hands-on approach. For the former, we have weekly tutorials on web development technologies like Node.js, MongoDB, and React.js. For the latter, we have project teams in which members can practice their newly-learned skills into nice, (ideally) working web applications.";
+let aboutUs = "At GT WebDev, we take an interactive approach to learning web development. We have project teams in which members use up-to-date technologies to make exciting web applications. We have hackathons and other interactive events where members can practice their skills as well as gain new ones. Finally, we have workshops where members can learn about cool things like new technologies, design patterns, life after college, etc.";
 
 let qAndAs = [
     {

@@ -105,9 +105,9 @@ class MainContact extends Component {
                         </Link>
                     </Grid>
                     <Grid item xs={12} md={4}>
-                        <Link href="https://www.facebook.com/GtWebdev/">
-                            <img src="facebookIcon.png" className="mainContactImg"></img>
-                            <Typography variant="body1">facebook.com/GtWebdev/</Typography>
+                        <Link href="https://www.instagram.com/gtwebdev/">
+                            <img src="Instagram.png" className="mainContactImg"></img>
+                            <Typography variant="body1">Instagram.com/gtwebdev/</Typography>
                         </Link>
                     </Grid>
                 </Grid>
