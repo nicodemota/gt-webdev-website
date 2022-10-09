@@ -3,7 +3,8 @@
 
 html,
 body {
-  background-color: #e5e5e5;
+  background-color: #3C3C39;
+  color: #E6E6E6;
   margin: 0;
   font-family: 'Exo 2', sans-serif;
   overflow: auto;
@@ -17,9 +18,6 @@ a {
 * {
   box-sizing: border-box;
 }
-
-
-
 
 .App-header {
   background-color: #282c34;
@@ -42,8 +40,9 @@ a {
 }
 
 .mainTitle {
-  color: #f0cd42;
+  color: #E6E6E6;
   font-family: 'Bitter', serif !important;
+  font-size: 15px;
   padding-bottom: 10px;
 }
 
@@ -116,13 +115,6 @@ a {
   padding-top: 10px;
 }
 
-.homeImg {
-  width: 47%;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 10px;
-}
-
 .mainContactImg {
   width: 80px;
 }
@@ -136,3 +128,70 @@ a {
 #happyKoala {
   width: 300px;
 }
+
+/* /Home */
+.homeSlogan1 {
+  font-family: 'Helvetica';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2rem;
+  height: 30vh;
+  padding: 20% 0 0 15%;
+  text-align: center;
+}
+.homeSlogan2 {
+  font-family: 'Helvetica';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2rem;
+  height: 30vh;
+  padding: 30% 20% 0 0;
+  text-align: center;
+}
+.homeSlogan3 {
+  font-family: 'Helvetica';
+  font-style: normal;
+  font-weight: 700;
+  padding: 5% 0 5% 35%;
+}
+.homeImg1 {
+  width: 25vw;
+  height: 25vw;
+  border-radius: 50%;
+  margin-top: 10vh;
+  margin-left: 10vw;
+}
+.homeImg2 {
+  width: 25vw;
+  height: 25vw;
+  border-radius: 50%;
+  margin-left: 20%;
+  margin-top: 5vh;
+}
+.homeSlogan1Underline {
+  display: flex;
+  background: #F0CD42;
+  border-radius: 10px;
+  width: 20vw;
+  height: 1vw;
+  margin: 2% 0% 0% 50%;
+}
+.homeSlogan2Underline {
+  background: #F0CD42;
+  border-radius: 10px;
+  width: 20vw;
+  height: 1vw;
+  margin: 2% 0% 0% 20%;
+}
+.o2 {
+  background-color: #f0cd42;
+}
+
+
+/* /Schedule */
+
+/* /About Us */
+
+/* /Projects */
+
+/* /Contact US */

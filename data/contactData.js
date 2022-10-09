@@ -16,4 +16,6 @@ let adminContacts = [
     },
 ];
 
-export {adminContacts};
+let contactTitle = "Got a question? No worries, send us a message";
+
+export {adminContacts, contactTitle};

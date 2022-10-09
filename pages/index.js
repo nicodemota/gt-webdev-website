@@ -5,7 +5,8 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Head from 'next/head'
-import {slogan, aboutUs, qAndAs, members} from '../data/homeData.js';
+
+import { slogan, faq } from "../data/homeData.js";
 
 class Home extends Component {
   render() {
@@ -27,18 +28,57 @@ class Home extends Component {
                     <meta property="twitter:card" content="summary_large_image" />
                 </Head>
                 <NavBar />
-                <IntroBox />
-                <div className="main">
+                <Introduction />
+                {/* <IntroBox /> */}
+                {/* <div className="main">
                     <AboutUs />
                     <br />
                     <FAQ />
                     <br />
                     <MeetMembers />
-                </div>
+                </div> */}
                 <BottomBar />
           </div>
       );
   }
+}
+
+const Introduction = () => {
+    return (
+        <Box sx={{ width: '100%' }}>
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                <Grid xs={6} md={7}>
+                    <Typography variant="h2" className="homeSlogan1">
+                        <div>
+                            { slogan[0] }
+                            <div className="homeSlogan1Underline" />
+                        </div>
+                    </Typography>
+                </Grid>
+                <Grid xs={6} md={5}>
+                    <img src="homeImageOne.jpg" className="homeImg1"/>
+                </Grid>
+
+                <Grid xs={6} md={7} >
+                    <img src="homeImageTwo.jpg" className="homeImg2"/>
+                </Grid>
+                <Grid xs={6} md={5}>
+                    <Typography variant="h2" className="homeSlogan2">
+                        <div>
+                            { slogan[1] }
+                            <div className="homeSlogan2Underline" />
+                        </div>
+                    </Typography>
+                </Grid>
+
+                <Grid xs={12} md={12} >
+                    <Typography variant="h2" className="homeSlogan3">
+                        { slogan[2] }
+                    </Typography>
+                </Grid>
+            </Grid>
+        </Box>
+    )
 }
 
 class IntroBox extends Component {
