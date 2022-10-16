@@ -1,12 +1,15 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 import NavBar from "../components/NavBar";
 import BottomBar from "../components/BottomBar";
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Head from 'next/head'
+import { Accordion, AccordionSummary, AccordionDetails } from "@material-ui/core";
+import styled from "@material-ui/core";
 
-import { slogan, faq } from "../data/homeData.js";
+
+import { slogan, contactEmail, faq } from "../data/homeData.js";
 
 // ThemeProvider makes the layout look goofy, originaly (6-6)(6-6)(12) layout,
 // after themeprovider(12)(12)(12)(12)(12) layout
@@ -25,6 +28,7 @@ theme.typography.h2 = {
     },
   };
 */
+
 
 class Home extends Component {
   render() {
@@ -52,7 +56,7 @@ class Home extends Component {
                     <meta property="og:image" content={`${process.env.NEXT_PUBLIC_BASE_URL}/gt-webdev-logo.png`} />
                     <meta property="og:image:alt" content="GT WebDev logo" />
                     <meta property="og:locale" content="en_US" />
-                    
+
                     <meta property="twitter:card" content="summary_large_image" />
                 </Head>
                 <NavBar />
@@ -64,6 +68,9 @@ class Home extends Component {
 }
 
 const Introduction = () => {
+
+    const [faqPanel, setFaqPanel] = useState("faqPanel9")
+
     return (
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Grid xs={12} sm={6} md={6} className="homeSloganGrid homeGridMargin">
@@ -91,23 +98,54 @@ const Introduction = () => {
                 </Typography>
             </Grid>
             
-            {/* Map out the faq, starting with question on left, answer on right, then switch*/}
+            {/* Map out the faq in an accordion style*/}
+            <Grid xs={12} md={12} className="faqStartMargin">
+                <Typography variant="h3" className="faqTitle">
+                    FAQ
+                </Typography>
+            </Grid>
+            <Grid xs={12} md={12} >
+                <Typography variant="h4" className="faqTitle">
+                    Any other questions related to WebDev can be emailed to: {contactEmail}
+                </Typography>
+            </Grid>
             {faq.map((cur, ind) => {
                 return(
+                    <Grid xs={12} md={12} lg={12} className="">
+                        <Accordion expanded={faqPanel === `faqPanel${ind}`} onChange={e => {
+                            setFaqPanel(faqPanel == `faqPanel${ind}` ? `faqPanel_` : `faqPanel${ind}`)
+                        }} style={{paddingLeft: "15vw"}}>
+                            <AccordionSummary aria-controls="panel1d-content" id={`faqPanel${ind}`} >
+                                <Typography variant="h4">
+                                    {cur[`q`]}
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Typography variant="h5">
+                                    {cur[`a`]}
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                    </Grid>
+                )
+            })}
+
+            {/* {faq.map((cur, ind) => {
+                return(
                     <Grid container>
-                        <Grid xs={12} md={6} className="homeSloganGrid">
+                        <Grid xs={12} md={6} className="faqTextGrid faqTextMargin">
                             <Typography variant="h2" className="faqText">
                                 {ind%2 == 0 ? cur['q'] : cur['a']}
                             </Typography>
                         </Grid>
-                        <Grid xs={12} md={6} className="homeSloganGrid">
+                        <Grid xs={12} md={6} className="faqTextGrid faqTextMargin">
                             <Typography variant="h2" className="faqText">
                                 { ind%2 == 1 ? cur['q'] : cur['a']}
                             </Typography>
                         </Grid>
                     </Grid>
                 )
-            })}
+            })} */}
         </Grid>
     )
 }

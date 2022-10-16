@@ -1,4 +1,5 @@
 let slogan = ["Fostering the learning of", "web development", "framework by framework"];
+let contactEmail = "helpme@gatech.edu"
 let faq = [
     {
         "q": "How do I join?",
@@ -64,4 +65,4 @@ let faq = [
 //     },
 // ];
 
-export {slogan, faq};
+export {slogan, contactEmail, faq};
