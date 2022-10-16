@@ -8,35 +8,55 @@ import Head from 'next/head'
 
 import { slogan, faq } from "../data/homeData.js";
 
+// ThemeProvider makes the layout look goofy, originaly (6-6)(6-6)(12) layout,
+// after themeprovider(12)(12)(12)(12)(12) layout
+/*
+const theme = createMuiTheme()
+theme.typography.h2 = {
+    fontSize: '3.75rem',
+    '@media (max-width:480px)': {
+      fontSize: '2.25rem',
+    },
+    '@media (max-width:1024px)': {
+        fontSize: '3.5rem',
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '2.4rem',
+    },
+  };
+*/
+
 class Home extends Component {
   render() {
       return (
           <div>
                 <Head>
                     <title>GT WebDev | Georgia Tech</title>
-                    <meta name="description" content="At GT WebDev, we learn about different web development languages, technologies, and frameworks, as well as how they work in combination with each other. Learning is done with a hybrid of both a traditional, demo-style approach and an interactive, hands-on approach. For the former, we have weekly tutorials on web development technologies like Node.js, MongoDB, and React.js. For the latter, we have project teams in which members can practice their newly-learned skills into nice, (ideally) working web applications." />
-
+                    <meta name="description" content="At GT WebDev, we learn about different web development languages, technologies, 
+                        and frameworks, as well as how they work in combination with each other. Learning is done with a hybrid of both a
+                        traditional, demo-style approach and an interactive, hands-on approach. For the former, we have weekly tutorials
+                        on web development technologies like Node.js, MongoDB, and React.js. For the latter, we have project teams in which
+                        members can practice their newly-learned skills into nice, (ideally) working web applications."
+                    />
                     <meta property="og:title" content="GT WebDev | Georgia Tech" />
-                    <meta property="og:description" content="At GT WebDev, we learn about different web development languages, technologies, and frameworks, as well as how they work in combination with each other. Learning is done with a hybrid of both a traditional, demo-style approach and an interactive, hands-on approach. For the former, we have weekly tutorials on web development technologies like Node.js, MongoDB, and React.js. For the latter, we have project teams in which members can practice their newly-learned skills into nice, (ideally) working web applications." />  
+                    <meta property="og:description" content="At GT WebDev, we learn about different web development languages,
+                        technologies, and frameworks, as well as how they work in combination with each other. Learning is done with
+                        a hybrid of both a traditional, demo-style approach and an interactive, hands-on approach. For the former, we
+                        have weekly tutorials on web development technologies like Node.js, MongoDB, and React.js. For the latter, we
+                        have project teams in which members can practice their newly-learned skills into nice, (ideally) working
+                        web applications." 
+                    />  
                     <meta property="og:site_name" content="GT Web Dev" />
                     <meta property="og:type" content="website" />
                     <meta property="og:url" content={`${process.env.NEXT_PUBLIC_BASE_URL}`} />
                     <meta property="og:image" content={`${process.env.NEXT_PUBLIC_BASE_URL}/gt-webdev-logo.png`} />
                     <meta property="og:image:alt" content="GT WebDev logo" />
                     <meta property="og:locale" content="en_US" />
-
+                    
                     <meta property="twitter:card" content="summary_large_image" />
                 </Head>
                 <NavBar />
                 <Introduction />
-                {/* <IntroBox /> */}
-                {/* <div className="main">
-                    <AboutUs />
-                    <br />
-                    <FAQ />
-                    <br />
-                    <MeetMembers />
-                </div> */}
                 <BottomBar />
           </div>
       );
@@ -45,39 +65,50 @@ class Home extends Component {
 
 const Introduction = () => {
     return (
-        <Box sx={{ width: '100%' }}>
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                <Grid xs={6} md={7}>
-                    <Typography variant="h2" className="homeSlogan1">
-                        <div>
-                            { slogan[0] }
-                            <div className="homeSlogan1Underline" />
-                        </div>
-                    </Typography>
-                </Grid>
-                <Grid xs={6} md={5}>
-                    <img src="homeImageOne.jpg" className="homeImg1"/>
-                </Grid>
-
-                <Grid xs={6} md={7} >
-                    <img src="homeImageTwo.jpg" className="homeImg2"/>
-                </Grid>
-                <Grid xs={6} md={5}>
-                    <Typography variant="h2" className="homeSlogan2">
-                        <div>
-                            { slogan[1] }
-                            <div className="homeSlogan2Underline" />
-                        </div>
-                    </Typography>
-                </Grid>
-
-                <Grid xs={12} md={12} >
-                    <Typography variant="h2" className="homeSlogan3">
-                        { slogan[2] }
-                    </Typography>
-                </Grid>
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Grid xs={12} sm={6} md={6} className="homeSloganGrid homeGridMargin">
+                <Typography variant="h2" className="homeSloganTxt">
+                    { slogan[0] }
+                </Typography>
             </Grid>
-        </Box>
+            <Grid xs={12} sm={6} md={6} className="homeImgGrid homeGridMargin">
+                <img src="homeImageOne.jpg" className="homeImg"/>
+            </Grid>
+
+            <Grid xs={12} sm={6} md={6} className="homeImgGrid">
+                <img src="homeImageTwo.jpg" className="homeImg"/>
+            </Grid>
+            <Grid xs={12} sm={6} md={6} className="homeSloganGrid">
+                <Typography variant="h2" className="homeSloganTxt">
+                    { slogan[1] }
+                    <span className="homeSlogan2Underline" />
+                </Typography>
+            </Grid>
+
+            <Grid xs={12} md={12} className="homeSloganGrid homeGridMargin">
+                <Typography variant="h2" className="homeSloganTxt">
+                    { slogan[2] }
+                </Typography>
+            </Grid>
+            
+            {/* Map out the faq, starting with question on left, answer on right, then switch*/}
+            {faq.map((cur, ind) => {
+                return(
+                    <Grid container>
+                        <Grid xs={12} md={6} className="homeSloganGrid">
+                            <Typography variant="h2" className="faqText">
+                                {ind%2 == 0 ? cur['q'] : cur['a']}
+                            </Typography>
+                        </Grid>
+                        <Grid xs={12} md={6} className="homeSloganGrid">
+                            <Typography variant="h2" className="faqText">
+                                { ind%2 == 1 ? cur['q'] : cur['a']}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                )
+            })}
+        </Grid>
     )
 }
 

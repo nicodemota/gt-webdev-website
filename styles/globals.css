@@ -130,59 +130,52 @@ a {
 }
 
 /* /Home */
-.homeSlogan1 {
+.homeSloganTxt {
   font-family: 'Helvetica';
   font-style: normal;
   font-weight: 700;
-  font-size: 2rem;
-  height: 30vh;
-  padding: 20% 0 0 15%;
+}
+.homeSloganGrid {
+  display: flex;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
-.homeSlogan2 {
-  font-family: 'Helvetica';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 2rem;
-  height: 30vh;
-  padding: 30% 20% 0 0;
+.homeImg {
+  width: 35vw;
+  height: 35vw;
+  border-radius: 50%;
+}
+.homeImgGrid {
+  display: flex;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
-.homeSlogan3 {
-  font-family: 'Helvetica';
-  font-style: normal;
-  font-weight: 700;
-  padding: 5% 0 5% 35%;
-}
-.homeImg1 {
-  width: 25vw;
-  height: 25vw;
-  border-radius: 50%;
-  margin-top: 10vh;
-  margin-left: 10vw;
-}
-.homeImg2 {
-  width: 25vw;
-  height: 25vw;
-  border-radius: 50%;
-  margin-left: 20%;
+.homeGridMargin {
   margin-top: 5vh;
 }
+
+
 .homeSlogan1Underline {
   display: flex;
   background: #F0CD42;
   border-radius: 10px;
   width: 20vw;
   height: 1vw;
-  margin: 2% 0% 0% 50%;
 }
 .homeSlogan2Underline {
   background: #F0CD42;
   border-radius: 10px;
   width: 20vw;
   height: 1vw;
-  margin: 2% 0% 0% 20%;
 }
+.faqText {
+  font-family: 'Helvetica';
+  font-style: normal;
+  font-weight: 700;
+}
+
 .o2 {
   background-color: #f0cd42;
 }
