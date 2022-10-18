@@ -1,14 +1,8 @@
 import React, {Component} from "react";
 import NavBar from "../components/NavBar";
-import BottomBar from "../components/BottomBar";
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
-import MenuItem from '@material-ui/core/MenuItem';
 import Head from 'next/head';
-import Link from '@material-ui/core/Link';
-const axios = require("axios");
+import axios from "axios";
+import {Button, Link, MenuItem, Select, TextField, Typography} from "@mui/material";
 
 class Join extends Component {
     constructor(props) {
@@ -73,11 +67,6 @@ class Join extends Component {
                     <title>Join | GT WebDev</title>
                 </Head>
                 <NavBar />
-                {/* <div className="main">
-                    <Typography variant="h4" className="title">join</Typography>
-                    {body}
-                </div>
-                <BottomBar /> */}
                 <div className="main">
                     <Typography variant="h4" className="title1">how to join</Typography>
                     <Typography variant="body1">
@@ -89,7 +78,7 @@ class Join extends Component {
                     <br />
                     <br />
                     <Typography variant="h4" className="title2">where do we meet</Typography>
-                    <Typography variant="body1">Our project teams meet every Tuesday from 6:30 P.M. to around 7:30 P.M. Atlanta time in CCB (College of Computing Building) 102. 
+                    <Typography variant="body1">Our project teams meet every Tuesday from 6:30 P.M. to around 7:30 P.M. Atlanta time in CCB (College of Computing Building) 102.
                         <br />
                         The time and place for our events and workshops vary, but they will typically take place on Thursdays at 6:30 P.M.
                     </Typography>
