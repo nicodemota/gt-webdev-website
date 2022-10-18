@@ -1,5 +1,6 @@
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+// import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import '../styles/globals.css';
+import {createMuiTheme, ThemeProvider} from "@mui/material";
 
 const theme = createMuiTheme({
   palette: {

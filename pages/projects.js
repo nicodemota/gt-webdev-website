@@ -2,9 +2,10 @@ import React, {Component} from "react";
 import NavBar from "../components/NavBar";
 import {currentData,previousData} from '../data/projectData.js';
 import BottomBar from "../components/BottomBar";
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
+// import Typography from '@material-ui/core/Typography';
+// import Grid from '@material-ui/core/Grid';
 import Head from 'next/head'
+import {Grid, Typography} from "@mui/material";
 
 class Projects extends Component {
     render() {
@@ -47,7 +48,7 @@ class CurrentProjects extends Component {
 }
 
 class PreviousProjects extends Component {
-    render() { 
+    render() {
         return (
             <div>
                 <Typography variant="h4" className="title">previous projects</Typography>
