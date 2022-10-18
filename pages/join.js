@@ -1,14 +1,6 @@
 import React, {Component} from "react";
 import NavBar from "../components/NavBar";
-import BottomBar from "../components/BottomBar";
-// import Typography from '@material-ui/core/Typography';
-// import TextField from '@material-ui/core/TextField';
-// import Select from '@material-ui/core/Select';
-// import Button from '@material-ui/core/Button';
-// import MenuItem from '@material-ui/core/MenuItem';
 import Head from 'next/head';
-// import Link from '@material-ui/core/Link';
-// const axios = require("axios");
 import axios from "axios";
 import {Button, Link, MenuItem, Select, TextField, Typography} from "@mui/material";
 
@@ -75,11 +67,6 @@ class Join extends Component {
                     <title>Join | GT WebDev</title>
                 </Head>
                 <NavBar />
-                {/* <div className="main">
-                    <Typography variant="h4" className="title">join</Typography>
-                    {body}
-                </div>
-                <BottomBar /> */}
                 <div className="main">
                     <Typography variant="h4" className="title1">how to join</Typography>
                     <Typography variant="body1">

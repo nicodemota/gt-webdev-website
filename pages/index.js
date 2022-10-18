@@ -1,9 +1,6 @@
 import React, {Component} from "react";
 import NavBar from "../components/NavBar";
 import BottomBar from "../components/BottomBar";
-// import Box from '@material-ui/core/Box';
-// import Typography from '@material-ui/core/Typography';
-// import Grid from '@material-ui/core/Grid';
 import Head from 'next/head'
 import {slogan, aboutUs, qAndAs, members} from '../data/homeData.js';
 import {Box, Grid, Typography} from "@mui/material";
@@ -95,12 +92,12 @@ class QuestAndAnswer extends Component {
   render() {
       return (
           <div className="indented">
-              <Typography variant="body1" fontWeight={600}>
-                <Box fontWeight={600}>
-                    {this.state.question}
-                </Box>
-                {this.state.answer}
-              </Typography>
+              {/*<Typography variant="body1" fontWeight={600}>*/}
+              {/*  <Box fontWeight={600}>*/}
+              {/*      {this.state.question}*/}
+              {/*  </Box>*/}
+              {/*  {this.state.answer}*/}
+              {/*</Typography>*/}
           </div>
       )
   }
