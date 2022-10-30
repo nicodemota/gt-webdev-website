@@ -217,7 +217,21 @@ a {
 
 /* /Projects */
 
+
 /* /Contact US */
+.contactUsText {
+  font-family: 'Helvetica';
+  font-style: normal;
+  font-weight: 650 !important;
+}
+.contactUsTitle {
+  text-align: center;
+}
+.contactUsCard {
+  background-color: #3C3C39 !important;
+  color: white !important;
+}
+
 
 /* /BottomBar */
 .bottomBarGrid {

@@ -44,47 +44,47 @@ const Introduction = () => {
     const [faqPanel, setFaqPanel] = useState("faqPanel_")
 
     return (
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid container rowSpacing={1} >
             {/* UpperHalf Text+Img */}
-            <Grid xs={12} sm={6} md={6} className="homeSloganGrid homeGridMargin">
+            <Grid item xs={12} sm={6} md={6} className="homeSloganGrid homeGridMargin">
                 <Typography variant="h2" className="homeSloganTxt">
                     { slogan[0] }
                 </Typography>
             </Grid>
-            <Grid xs={12} sm={6} md={6} className="homeImgGrid homeGridMargin">
+            <Grid item xs={12} sm={6} md={6} className="homeImgGrid homeGridMargin">
                 <img src="homeImageOne.jpg" className="homeImg"/>
             </Grid>
 
-            <Grid xs={12} sm={6} md={6} className="homeImgGrid">
+            <Grid item xs={12} sm={6} md={6} className="homeImgGrid">
                 <img src="homeImageTwo.jpg" className="homeImg"/>
             </Grid>
-            <Grid xs={12} sm={6} md={6} className="homeSloganGrid">
+            <Grid item xs={12} sm={6} md={6} className="homeSloganGrid">
                 <Typography variant="h2" className="homeSloganTxt">
                     { slogan[1] }
                     <span className="homeSlogan2Underline" />
                 </Typography>
             </Grid>
 
-            <Grid xs={12} md={12} className="homeSloganGrid homeGridMargin">
+            <Grid item xs={12} md={12} className="homeSloganGrid homeGridMargin">
                 <Typography variant="h2" className="homeSloganTxt">
                     { slogan[2] }
                 </Typography>
             </Grid>
             
             {/* Map out the faq in an accordion style*/}
-            <Grid xs={12} md={12} className="faqStartMargin">
+            <Grid item xs={12} md={12} className="faqStartMargin">
                 <Typography variant="h3" className="faqTitle">
                     FAQ
                 </Typography>
             </Grid>
-            <Grid xs={12} md={12} className="faqContactMargin" >
+            <Grid item xs={12} md={12} className="faqContactMargin" >
                 <Typography variant="h4" className="faqTitle">
                     Any other questions related to WebDev can be emailed to: {contactEmail}
                 </Typography>
             </Grid>
             {faq.map((cur, ind) => {
                 return (
-                    <Grid xs={12} md={12} lg={12} >
+                    <Grid item xs={12} md={12} lg={12} >
                         <Accordion expanded={faqPanel === `faqPanel${ind}`} onChange={e => {
                             // Reset the accordion back to initial state if a human clicks on the same accordion
                             const curPanel = `faqPanel${ind}`
