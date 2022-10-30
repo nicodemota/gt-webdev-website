@@ -1,37 +1,40 @@
 import { Button, Card, Grid, TextField, Typography } from "@mui/material";
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 import NavBar from "../components/NavBar.js";
 import { contactTitle } from '../data/contactData.js';
 
 const Contact = () => {
+
+    const submitMsg = () => {
+        console.log("Click on Submit")
+    }
+    
     return (
         <div>
             <NavBar />
             <br />
-            <Typography variant="h3" component="p" className="contactUsText contactUsTitle">
+            <Typography variant="h4" component="p" className="contactUsText contactUsTitle">
                 {contactTitle}
             </Typography>
-            <Card style={{ maxWidth: 1000, padding: "20px 5px", margin: "auto" }} className="contactUsCard">
-                <Grid container rowSpacing={2} columnSpacing={2}>
-                    <Grid item xs={12} sm={6} md={6}>
-                        <TextField placeholder="Enter first name" label="First Name" variant="outlined" fullWidth required />
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={6}>
-                        <TextField placeholder="Enter last name" label="Last Name" variant="outlined" fullWidth required />
-                    </Grid>
-
-                    <Grid item xs={12} sm={12} md={12}>
-                        <TextField type="email" placeholder="Enter email" label="Email" variant="outlined" fullWidth required />
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={12}>
-                        <TextField label="Message" multiline rows={4} placeholder="Type your message here" variant="outlined" fullWidth required />
-                    </Grid>
-                    
-                    <Grid item xs={12}>
-                        <Button type="submit" variant="contained" color="primary" fullWidth>Submit</Button>
-                    </Grid>
+            <Grid container spacing={1} className="contactUsForm">
+                <Grid item xs={12} sm={6} md={6}>
+                    <TextField fullWidth required placeholder="Enter first name" label="First Name" variant="outlined"/>
                 </Grid>
-            </Card>
+                <Grid item xs={12} sm={6} md={6}>
+                    <TextField fullWidth required placeholder="Enter last name" label="Last Name" />
+                </Grid>
+
+                <Grid item xs={12} sm={12} md={12}>
+                    <TextField type="email" placeholder="Enter email" label="Email" variant="outlined" fullWidth required />
+                </Grid>
+                <Grid item xs={12} sm={12} md={12}>
+                    <TextField label="Message" multiline rows={4} placeholder="Type your message here" variant="outlined" fullWidth required />
+                </Grid>
+                
+                <Grid item xs={12}>
+                    <Button fullWidth type="submit" variant="contained" color="primary" onClick={submitMsg}>Submit</Button>
+                </Grid>
+            </Grid>
 
         </div>
     )
