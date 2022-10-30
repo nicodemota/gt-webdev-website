@@ -2,13 +2,9 @@ import React, {Component} from "react";
 import {adminContacts} from '../data/contactData.js';
 import NavBar from "../components/NavBar";
 import BottomBar from "../components/BottomBar";
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
 import Head from 'next/head'
-const axios = require("axios");
+import {Button, Grid, Link, TextField, Typography} from "@mui/material";
+import axios from "axios";
 
 class Contact extends Component {
     constructor(props) {
