@@ -1,5 +1,6 @@
 import { Button, Card, Grid, TextField, Typography } from "@mui/material";
-import React, {Component, useState} from "react";
+import React, { useState } from "react";
+import Head from "next/head.js";
 import NavBar from "../components/NavBar.js";
 import { contactTitle } from '../data/contactData.js';
 
@@ -23,6 +24,9 @@ const Contact = () => {     // TODO - Make a small gap between first & last name
     
     return (
         <div>
+            <Head>
+                <title>Contact | GT WebDev</title>
+            </Head>
             <NavBar />
             <br />
             <Typography variant="h4" component="p" className="contactUsText contactUsTitle">

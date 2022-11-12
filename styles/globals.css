@@ -212,6 +212,43 @@ a {
 
 
 /* /Schedule */
+.ScheduleContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ScheduleGrid {
+  background-color: #f0cd42;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  width: 80vw;
+  height: 10vh;
+  border-radius: 5%;
+  margin-bottom: 15px;
+}
+.ScheduleDateBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 5vh;
+  background-color: #3B3C39;
+  color: #E6E6E6;
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  overflow-wrap: break-word;
+}
+
+
+
+
 
 /* /About Us */
 
