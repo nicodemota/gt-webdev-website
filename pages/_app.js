@@ -1,7 +1,7 @@
 import '../styles/globals.css';
-import {createMuiTheme, ThemeProvider} from "@mui/material";
+import {createTheme, ThemeProvider} from "@mui/material";
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: "#222220"
