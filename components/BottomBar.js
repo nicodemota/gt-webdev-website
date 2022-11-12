@@ -2,6 +2,7 @@ import { Grid, Typography } from "@mui/material";
 import React, {Component} from "react";
 import { footer } from "../data/homeData";
 
+// Bottom bar with Instagram + Discord + Github Logo, along with some cookie and milk XD
 class BottomBar extends Component {
     render() {
         return (

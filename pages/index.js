@@ -1,11 +1,9 @@
 import React, {Component, useState} from "react";
-import NavBar from "../components/NavBar";
-import BottomBar from "../components/BottomBar";
-import Head from 'next/head'
-
 import {Accordion, AccordionDetails, AccordionSummary, Box, Grid, Typography} from "@mui/material";
 
-
+import Head from 'next/head'
+import NavBar from "../components/NavBar";
+import BottomBar from "../components/BottomBar";
 import { slogan, contactEmail, faq } from "../data/homeData.js";
 
 class Home extends Component {
@@ -39,8 +37,10 @@ class Home extends Component {
   }
 }
 
-const Introduction = () => {
+// Home page with webDev slogan as well as faqs. 2 columns style in any screen bigger or equal to sm, else 1 column
+const Introduction = () => {    // TODO - Make either custome theme or mediaFrame CSS markup to make text size smaller in smaller screen
 
+    // State to keep track of which faq panel to open, only one panel will be open at a time
     const [faqPanel, setFaqPanel] = useState("faqPanel_")
 
     return (

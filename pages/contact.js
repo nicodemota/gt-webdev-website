@@ -3,18 +3,22 @@ import React, {Component, useState} from "react";
 import NavBar from "../components/NavBar.js";
 import { contactTitle } from '../data/contactData.js';
 
-const Contact = () => {
+// Contact page consisting of a basic form asking for firstLastName, emailAddress, and msg to send
+const Contact = () => {     // TODO - Make a small gap between first & last name textfield without creating margin, and change the color theme
 
-    const [blob, setBlob] = useState({first: "W", last: "A", email: "LKJ", msg: "alsjdfl;asd"})
+    // Keep track of all the information within 
+    const [blob, setBlob] = useState({first: '', last: '', email: '', msg: ''})
 
-    const submitMsg = () => {
-        console.log(`A message submitted by ${blob.first} ${blob.last}(${blob.email}) \n message: ${blob.msg}.`)
-    }
-
+    // Handel form data change, pass in the attribute along with the value to set it to
     const handleFormChange = (blobProp, blobVal) => {
         const blobCopy = blob
         blobCopy[blobProp] = blobVal
         setBlob(blobCopy)
+    }
+
+    // Submit message to webDev email
+    const submitMsg = () => {
+        console.log(`A message submitted by ${blob.first} ${blob.last}(${blob.email}) \n message: ${blob.msg}.`)
     }
     
     return (
