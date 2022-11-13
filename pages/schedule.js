@@ -3,13 +3,15 @@ import NavBar from "../components/NavBar";
 import BottomBar from "../components/BottomBar";
 import Head from 'next/head'
 import {scheduleData} from '../data/scheduleData.js';
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
 const Schedule = () => {
 
     const oneColText = (txt) => {
-        const res = txt.split(" ");
+        const res = txt.split(" ")
         console.log(`${res[0]}\n${res[1]}\n${res[2]}`)
+        if (res[1] == undefined)
+            return txt
         return `${res[0]}\n${res[1]}\n${res[2]}`
     }
 
@@ -20,22 +22,24 @@ const Schedule = () => {
             </Head>
             <NavBar />
             
-            <Grid container className="ScheduleContainer" style={{margin: "15px"}}>
+            <Grid container rowGap={3} className="scheduleContainer">
                 {scheduleData.map((cur, ind) => {
                     return(
-                        <Grid container item columnGap={1} className="ScheduleGrid">
-                            <Grid sm={4} md={2} lg={2} className="ScheduleDateBox">
-                                {oneColText(cur['date'])}
+                        <Grid container item className="scheduleGrid">
+                            <Grid xs={4} className="scheduleDateGrid">
+                                <Typography className="scheduleDateText">
+                                    {oneColText(cur['date'])}
+                                </Typography>
                             </Grid>
-                            <Grid sm={4} md={5} lg={5} style={{color: "#000000"}}>
-                                {cur['agenda']}
+                            <Grid xs={6} >
+                                <Typography className="scheduleAgendaTxt">
+                                    {cur['agenda']}
+                                </Typography>
                             </Grid>
-                            <Grid sm={4} md={2} lg={2} >
-                                {cur['link'] != 'N/A' 
+                            <Grid xs={2} >
+                                {cur['link'] != 'N/A'
                                 ? 
-                                <a href={cur['link']}>
-                                    <img src="camera.png" className="bottomBarImg"/>
-                                </a>
+                                <a href={cur['link']}> <img src="camera.png" className="bottomBarImg"/></a>
                                 :
                                 <span />}
                             </Grid>

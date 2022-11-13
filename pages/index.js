@@ -47,7 +47,7 @@ const Introduction = () => {    // TODO - Make either custome theme or mediaFram
         <Grid container rowSpacing={1} >
             {/* UpperHalf Text+Img */}
             <Grid item xs={12} sm={6} md={6} className="homeSloganGrid homeGridMargin">
-                <Typography variant="h2" className="homeSloganTxt">
+                <Typography variant="h3" className="homeSloganTxt">
                     { slogan[0] }
                 </Typography>
             </Grid>
@@ -59,14 +59,14 @@ const Introduction = () => {    // TODO - Make either custome theme or mediaFram
                 <img src="homeImageTwo.jpg" className="homeImg"/>
             </Grid>
             <Grid item xs={12} sm={6} md={6} className="homeSloganGrid">
-                <Typography variant="h2" className="homeSloganTxt">
+                <Typography variant="h3" className="homeSloganTxt">
                     { slogan[1] }
                     <span className="homeSlogan2Underline" />
                 </Typography>
             </Grid>
 
             <Grid item xs={12} md={12} className="homeSloganGrid homeGridMargin">
-                <Typography variant="h2" className="homeSloganTxt">
+                <Typography variant="h3" className="homeSloganTxt">
                     { slogan[2] }
                 </Typography>
             </Grid>

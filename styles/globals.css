@@ -147,6 +147,13 @@ a {
   height: 30vw;
   border-radius: 50%;
 }
+@media only screen and (max-width: 600px) {
+  .homeImg {
+    width: 45vw;
+    height: 45vw;
+    margin-bottom: 15px;
+  }
+}
 .homeImgGrid {
   display: flex;
   text-align: center;
@@ -212,40 +219,50 @@ a {
 
 
 /* /Schedule */
-.ScheduleContainer{
+.scheduleContainer{
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 15px;
 }
-.ScheduleGrid {
+.scheduleGrid {
   background-color: #f0cd42;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80vw;
+  height: 12.5vh;
+}
+@media only screen and (max-width: 600px) {
+  .scheduleGrid {
+    height: 17.5vh;
+  }
+}
+.scheduleDateGrid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scheduleDateText {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   
-  width: 80vw;
-  height: 10vh;
-  border-radius: 5%;
-  margin-bottom: 15px;
-}
-.ScheduleDateBox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  height: 5vh;
   background-color: #3B3C39;
   color: #E6E6E6;
-
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-
-  overflow-wrap: break-word;
+  width: 100px;
+  height: 75px;
+  border-radius: 35%;
 }
 
+.scheduleAgendaTxt {
+  color: black;
+  font-family: 'Helvetica';
+  font-style: normal;
+  font-weight: bolder !important;
+  font-size:larger;
+}
 
 
 
@@ -278,8 +295,8 @@ a {
   align-items: center;
 }
 .bottomBarImg {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
 }
 .bottomBarTopMargin {
   margin-top: 5vh;

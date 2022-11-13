@@ -18,6 +18,6 @@ let faq = [
         "a": "All recordings can be found within scheduele page"
     }
 ]
-let footer = "Made with🥛🍪"
+let footer = "Made with 🥛🍪"
 
 export {slogan, contactEmail, faq, footer};

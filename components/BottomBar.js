@@ -23,7 +23,7 @@ class BottomBar extends Component {
                     </div>
                 </Grid>
                 <Grid className="bottomBarGrid bottomBarBottomMargin" xs={12} md={12}>
-                    <Typography variant="h5">
+                    <Typography variant="h6">
                         {footer}
                     </Typography>
                 </Grid>
