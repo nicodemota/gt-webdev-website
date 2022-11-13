@@ -230,12 +230,14 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80vw;
+  width: 70vw;
   height: 12.5vh;
+  border-radius: 25px;
 }
 @media only screen and (max-width: 600px) {
   .scheduleGrid {
     height: 17.5vh;
+    width: 80vw;
   }
 }
 .scheduleDateGrid {
@@ -253,7 +255,7 @@ a {
   color: #E6E6E6;
   width: 100px;
   height: 75px;
-  border-radius: 35%;
+  border-radius: 30px;
 }
 
 .scheduleAgendaTxt {
@@ -262,6 +264,11 @@ a {
   font-style: normal;
   font-weight: bolder !important;
   font-size:larger;
+}
+@media only screen and (max-width: 600px) {
+  .scheduleAgendaTxt {
+    font-weight: bold !important;
+  }
 }
 
 
