@@ -31,7 +31,13 @@ const Schedule = () => {
                                 {cur['agenda']}
                             </Grid>
                             <Grid sm={4} md={2} lg={2} >
-                                {cur['link'] != 'N/A' ? "Camera" : <span />}
+                                {cur['link'] != 'N/A' 
+                                ? 
+                                <a href={cur['link']}>
+                                    <img src="camera.png" className="bottomBarImg"/>
+                                </a>
+                                :
+                                <span />}
                             </Grid>
                         </Grid>
                     )
