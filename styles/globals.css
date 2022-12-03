@@ -299,6 +299,21 @@ a {
 }
 
 /* /Projects */
+.projectSectionTitle {
+  font-family: 'Helvetica';
+  font-style: normal;
+  padding-left: 5vw;
+  margin-top: 50px;
+}
+.projectBoxInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.projectSectionPadding {
+  padding-left: 5vw;
+}
 
 
 /* /Contact US */
