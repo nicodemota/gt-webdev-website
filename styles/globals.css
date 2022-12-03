@@ -311,6 +311,9 @@ a {
   justify-content: center;
   text-align: center;
 }
+.projectBoxTxt {
+  color: #BCF042;
+}
 .projectSectionPadding {
   padding-left: 5vw;
 }

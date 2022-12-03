@@ -21,18 +21,22 @@ const Projects = () => {
                 <title>Projects | GT WebDev</title>
             </Head>
             <NavBar />
+
+            {/* Current Semster Project List */}
             <Typography variant="h3" className="projectSectionTitle">
                 {currentData[0]['semester']}
             </Typography>
             <Grid container columnGap={2} className="projectSectionPadding">
                 {currentData[0]['projects'].map((cur, ind) => {
                     return(
-                        <Box sx={{ ...commonStyles, borderRadius: 5 }} className="projectBoxInfo">
+                        <Box sx={{ ...commonStyles, borderRadius: 5 }} className="projectBoxInfo projectBoxTxt">
                             {cur['name']}
                         </Box>
                     )
                 })}
             </Grid>
+
+            {/* List of previous semester projects */}
             {previousData.map((cur, ind) => {
                 return (
                     <div>
@@ -42,7 +46,7 @@ const Projects = () => {
                         <Grid container columnGap={2} className="projectSectionPadding">
                             {cur['projects'].map((cur, ind) => {
                                 return(
-                                    <Box sx={{ ...commonStyles, borderRadius: 5 }} className="projectBoxInfo">
+                                    <Box sx={{ ...commonStyles, borderRadius: 5 }} className="projectBoxInfo projectBoxTxt">
                                         {cur['name']}
                                     </Box>
                                 )
