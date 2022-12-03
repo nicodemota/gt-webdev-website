@@ -6,7 +6,7 @@ import { aboutUs } from "../data/aboutusData";
 import { Grid, Typography } from "@mui/material";
 
 const AboutUs = () => {
-
+    
     return(
         <div>
             <Head />
