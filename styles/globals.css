@@ -275,6 +275,27 @@ a {
 
 
 /* /About Us */
+.aboutUsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 15px;
+}
+.aboutUsGrid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.aboutUsTxt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.aboutUsImg {
+  width: 30vw;
+}
 
 /* /Projects */
 
