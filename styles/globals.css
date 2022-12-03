@@ -280,6 +280,7 @@ a {
   align-items: center;
   justify-content: center;
   padding-top: 15px;
+  padding: 20px;
 }
 .aboutUsGrid {
   display: flex;
