@@ -9,7 +9,9 @@ const AboutUs = () => {
     
     return(
         <div>
-            <Head />
+            <Head>
+                <title>About Us | GT WebDev</title>
+            </Head>
             <NavBar />
             <Grid container rowGap={7.5} className="aboutUsContainer">
                 <Grid item xs={12} sm={6} md={6}>
