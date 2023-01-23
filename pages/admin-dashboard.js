@@ -225,8 +225,8 @@ const AdminDashboard = () => {
                                                     setNameColumn(event.target.value)
                                                 }}
                                                 />
-                                                <p style={{marginTop: "0px"}}>
-                                                    {`Project preference - 1 means group people by their top choice`}
+                                                <p style={{marginTop: "0px", width: "100%"}}>
+                                                    {`Project preference, 1 means group people by their top choice`}
                                                 </p>
                                                 <TextField id="outlined-basic" label="Project Preference" variant="outlined" type="number"
                                                            name="project-preference" fullWidth={true} value={projectPreferenceNumber} onChange={(event) => {
