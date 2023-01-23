@@ -73,7 +73,7 @@ class FAQ extends Component {
         <div>
             <Typography variant="h4" className="title">faq</Typography>
             {qAndAs.map(elem => (
-                <QuestAndAnswer question={elem.question} answer={elem.answer}/>
+                <QuestAndAnswer key={elem.question} question={elem.question} answer={elem.answer}/>
             ))}
         </div>
       );

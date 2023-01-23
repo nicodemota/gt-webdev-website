@@ -30,12 +30,13 @@ class CurrentProjects extends Component {
             <div>
                 <Typography variant="h4" className="title">current projects</Typography>
                     {currentData.map(semester => (
-                        <div className="indented1">
+                        <div className="indented1" key={`${semester}`}>
                             <Typography variant="h6">{semester.semester}</Typography>
                             <Grid container spacing={3}>
                                 {semester.projects.map(project => (
                                     <Project name={project.name} description={project.description}
-                                      members={project.members} manager={project.manager} />
+                                      members={project.members} manager={project.manager}
+                                      key={`${project.name}-${project.description}`} />
                                 ))}
                             </Grid>
                         </div>
@@ -51,12 +52,13 @@ class PreviousProjects extends Component {
             <div>
                 <Typography variant="h4" className="title">previous projects</Typography>
                     {previousData.map(semester => (
-                        <div className="indented">
+                        <div className="indented" key={`${semester}`}>
                             <Typography variant="h6">{semester.semester}</Typography>
                             <Grid container spacing={3}>
                                 {semester.projects.map(project => (
                                     <Project name={project.name} description={project.description}
-                                      members={project.members} manager={project.manager} />
+                                      members={project.members} manager={project.manager}
+                                      key={`${project.name}-${project.description}`}/>
                                 ))}
                             </Grid>
                         </div>
