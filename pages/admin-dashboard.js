@@ -16,8 +16,7 @@ const AdminDashboard = () => {
     const [sheetName, setSheetName] = useState('Form Responses 2');
     const [nameColumn, setNameColumn] = useState('B');
     const [projectPreferenceNumber, setProjectPreferenceNumber] = useState(1);
-    const [projectColumnStart, setProjectColumnStart] = useState('I');
-    const [projectColumnEnd, setProjectColumnEnd] = useState('Q');
+    const [projectColumns, setProjectColumns] = useState('["I", "J", "K", "L", "M", "N", "O", "P", "Q", "BE", "BG", "BH", "BI"]');
     const [projectNameRegex, setProjectNameRegex] = useState(`\\[([^\\]]+)]`);
     const [projectRegexGroup, setProjectRegexGroup] = useState(1);
     const [csvData, setCSVData] = useState(undefined);
@@ -67,8 +66,6 @@ const AdminDashboard = () => {
                 try {
                     // convert column letters to index (ex: A->0, B->1, etc.)
                     const nameColumnNumber = excelSheetColumnNumber(nameColumn);
-                    const projectColumnStartNumber = excelSheetColumnNumber(projectColumnStart);
-                    const projectColumnEndNumber = excelSheetColumnNumber(projectColumnEnd);
 
                     // successfully fetched data of Google Sheet
                     const data = results?.data;
@@ -76,7 +73,8 @@ const AdminDashboard = () => {
 
                     // extract project names and assign them to project groupings
                     const projectGroupings = {};
-                    for (let column = projectColumnStartNumber; column < projectColumnEndNumber + 1; column++) {
+                    for (const columnLetter of JSON.parse(projectColumns)) {
+                        const column = excelSheetColumnNumber(columnLetter);
                         let projectName = formQuestions[column];
                         const projectNameRegexChecker = new RegExp(projectNameRegex, "g");
                         const regexResult = projectNameRegexChecker.exec(projectName);
@@ -96,10 +94,12 @@ const AdminDashboard = () => {
                     // associate people with projects they chose as their nth preference
                     let mostAmountOfPeopleInGrouping = 0;
                     for (let row = 1; row < data.length; row++) {
-                        for (let column = projectColumnStartNumber; column < projectColumnEndNumber + 1; column++) {
+                        for (let k = 0; k < JSON.parse(projectColumns).length; k++) {
+                            const columnLetter = JSON.parse(projectColumns)[k];
+                            const column = excelSheetColumnNumber(columnLetter);
                             try {
                                 if (parseInt(data[row][column]) === projectPreferenceNumber) {
-                                    const projectName = projectNames[column - projectColumnStartNumber];
+                                    const projectName = projectNames[k];
                                     projectGroupings[projectName].push(data[row][nameColumnNumber]);
                                     mostAmountOfPeopleInGrouping = Math.max(mostAmountOfPeopleInGrouping, projectGroupings[projectName].length);
                                 }
@@ -234,16 +234,11 @@ const AdminDashboard = () => {
                                                 }}
                                                 />
                                                 <p style={{marginTop: "0px"}}>
-                                                    Project column start and end refer to the columns in the Google Sheet that reference the project preferences results
+                                                    Columns of the Google Sheet that refer to project preferences
                                                 </p>
-                                                <TextField id="outlined-basic" label="Project Column Start" variant="outlined" type="text"
-                                                           name="project-column-start" fullWidth={true} value={projectColumnStart} onChange={(event) => {
-                                                    setProjectColumnStart(event.target.value)
-                                                }}
-                                                />
-                                                <TextField id="outlined-basic" label="Project Column End" variant="outlined" type="text"
-                                                           name="project-column-end" fullWidth={true} value={projectColumnEnd} onChange={(event) => {
-                                                    setProjectColumnEnd(event.target.value)
+                                                <TextField id="outlined-basic" label="Project Columns" variant="outlined" type="text"
+                                                           name="project-columns" fullWidth={true} value={projectColumns} onChange={(event) => {
+                                                           setProjectColumns(event.target.value)
                                                 }}
                                                 />
                                                 <p style={{marginTop: "0px"}}>
