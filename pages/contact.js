@@ -69,7 +69,8 @@ class Contact extends Component {
                     <Typography variant="h4" className="title">admin contact information</Typography>
                     <Grid container className="adminContactTitle">
                         {adminContacts.map(contact => (
-                            <AdminContact name={contact.name} title={contact.title} email={contact.email}/>
+                            <AdminContact key={`${contact.name}-${contact.title}-${contact.email}`}
+                                          name={contact.name} title={contact.title} email={contact.email}/>
                         ))}
                     </Grid>
                     <br />

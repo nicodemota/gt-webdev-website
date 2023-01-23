@@ -43,7 +43,7 @@ class SchedTable extends Component {
                     </TableHead>
                     <TableBody>
                     {scheduleData.map(row => (
-                        <TableRow key={row.name} className="schedTableRow">
+                        <TableRow key={`${row.date}-${row.agenda}-${row.link}`} className="schedTableRow">
                             <TableCell align="center" className="schedTableCell">{row.date}</TableCell>
                             <TableCell align="center" className="schedTableCell">{row.agenda}</TableCell>
                             <TableCell align="center" className="schedTableCell">
