@@ -201,7 +201,7 @@ const AdminDashboard = () => {
                                                 <span>Download CSV</span>
                                             </CSVLink> :
                                             <>
-                                                <p style={{marginTop: "0px", wordBreak: "break-all"}}>
+                                                <p style={{marginTop: "0px", wordBreak: "break-all", width: "100%"}}>
                                                     {`"Sheet ID" can be found from the URL of the Google Sheet (https://docs.google.com/spreadsheets/d/{Sheet ID})`}
                                                 </p>
                                                 <TextField id="outlined-basic" label="Sheet ID" variant="outlined" type="text"
@@ -209,7 +209,7 @@ const AdminDashboard = () => {
                                                     setSheetId(event.target.value)
                                                 }}
                                                 />
-                                                <p style={{marginTop: "0px"}}>
+                                                <p style={{marginTop: "0px", width: "100%"}}>
                                                     {`"Sheet Name" is the name of the tab you are on (found at the bottom of Google Sheets)`}
                                                 </p>
                                                 <TextField id="outlined-basic" label="Sheet Name" variant="outlined" type="text"
@@ -217,7 +217,7 @@ const AdminDashboard = () => {
                                                     setSheetName(event.target.value)
                                                 }}
                                                 />
-                                                <p style={{marginTop: "0px"}}>
+                                                <p style={{marginTop: "0px", width: "100%"}}>
                                                     Name column refers to the column in the Google Sheet that references the preferred name of an applicant
                                                 </p>
                                                 <TextField id="outlined-basic" label="Name Column" variant="outlined" type="text"
@@ -233,7 +233,7 @@ const AdminDashboard = () => {
                                                     setProjectPreferenceNumber(parseInt(event.target.value))
                                                 }}
                                                 />
-                                                <p style={{marginTop: "0px"}}>
+                                                <p style={{marginTop: "0px", width: "100%"}}>
                                                     Columns of the Google Sheet that refer to project preferences
                                                 </p>
                                                 <TextField id="outlined-basic" label="Project Columns" variant="outlined" type="text"
@@ -241,7 +241,7 @@ const AdminDashboard = () => {
                                                            setProjectColumns(event.target.value)
                                                 }}
                                                 />
-                                                <p style={{marginTop: "0px"}}>
+                                                <p style={{marginTop: "0px", width: "100%"}}>
                                                     {`(Optional) Project name regex will extract the project name from the column title of the Google Sheet`}
                                                 </p>
                                                 <TextField id="outlined-basic" label="Project Name Regex" variant="outlined" type="text"
@@ -249,7 +249,7 @@ const AdminDashboard = () => {
                                                     setProjectNameRegex(event.target.value)
                                                 }}
                                                 />
-                                                <p style={{marginTop: "0px"}}>
+                                                <p style={{marginTop: "0px", width: "100%"}}>
                                                     {`(Optional) Project regex group will extract the project name from a specified index of the matched regex group, note this is 0-indexed`}
                                                 </p>
                                                 <TextField id="outlined-basic" label="Project Regex Group" variant="outlined" type="number"
