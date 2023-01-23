@@ -69,11 +69,11 @@ const Login = () => {
                 <Box sx={{display: 'flex', flexDirection: 'column', maxWidth: '500px', rowGap: '10px'}}>
                     <h2 style={{textAlign: "center"}}>Login</h2>
                     <TextField id="outlined-basic" label="Email" variant="outlined" type="email"
-                               name="email" onChange={(event) => {
+                               name="email" value={email} onChange={(event) => {
                         setEmail(event.target.value)
                     }}/>
                     <TextField id="outlined-basic" label="Password" variant="outlined" type="password"
-                               name="password" onChange={(event) => {
+                               name="password" value={password} onChange={(event) => {
                         setPassword(event.target.value)
                     }}/>
                     <Button onClick={() => {
