@@ -5,7 +5,8 @@ import {Box, Button, TextareaAutosize, TextField} from "@mui/material";
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
 import firebaseApp from "../helpers/firebase";
 import {useRouter} from 'next/router'
-import {readRemoteFile} from "react-papaparse";
+import {readRemoteFile, jsonToCSV} from "react-papaparse";
+import { CSVLink } from "react-csv";
 
 const AdminDashboard = () => {
     const [adminConfirmed, setAdminConfirmed] = useState(false);
@@ -14,10 +15,12 @@ const AdminDashboard = () => {
     const [sheetId, setSheetId] = useState('1l4CCiWWuz0y40qaZ9rxIw2tqL-wb-N0VJKrEbtoQWIw');
     const [sheetName, setSheetName] = useState('Form Responses 2');
     const [nameColumn, setNameColumn] = useState('B');
+    const [projectPreferenceNumber, setProjectPreferenceNumber] = useState(1);
     const [projectColumnStart, setProjectColumnStart] = useState('I');
     const [projectColumnEnd, setProjectColumnEnd] = useState('Q');
     const [projectNameRegex, setProjectNameRegex] = useState(`\\[([^\\]]+)]`);
     const [projectRegexGroup, setProjectRegexGroup] = useState(1);
+    const [csvData, setCSVData] = useState(undefined);
 
     const auth = getAuth(firebaseApp);
     const router = useRouter();
@@ -91,13 +94,14 @@ const AdminDashboard = () => {
                     const projectNames = Object.keys(projectGroupings);
 
                     // associate people with projects they chose as their nth preference
+                    let mostAmountOfPeopleInGrouping = 0;
                     for (let row = 1; row < data.length; row++) {
                         for (let column = projectColumnStartNumber; column < projectColumnEndNumber + 1; column++) {
                             try {
-                                if (parseInt(data[row][column]) === 1) {
+                                if (parseInt(data[row][column]) === projectPreferenceNumber) {
                                     const projectName = projectNames[column - projectColumnStartNumber];
-                                    console.log(projectName, data[row]);
                                     projectGroupings[projectName].push(data[row][nameColumnNumber]);
+                                    mostAmountOfPeopleInGrouping = Math.max(mostAmountOfPeopleInGrouping, projectGroupings[projectName].length);
                                 }
                             } catch (e) {
                                 // could not parse int of data - could be empty or something
@@ -106,7 +110,30 @@ const AdminDashboard = () => {
                         }
                     }
 
-                    console.log(projectGroupings);
+                    // pad arrays in preparation to export as csv
+                    for (let i = 0; i < projectNames.length; i++) {
+                        const projectName = projectNames[i];
+                        while (projectGroupings[projectName].length < mostAmountOfPeopleInGrouping) {
+                            projectGroupings[projectName].push("");
+                        }
+                    }
+
+                    // convert format of data in preparation to export as csv
+                    const beforeCsvJsonData = [];
+                    for (let j = 0; j < mostAmountOfPeopleInGrouping; j++) {
+                        const obj = {};
+                        for (let i = 0; i < projectNames.length; i++) {
+                            const projectName = projectNames[i];
+                            obj[projectName] = projectGroupings[projectName][j]
+                        }
+                        beforeCsvJsonData.push(obj);
+                    }
+                    const finalResult = jsonToCSV(beforeCsvJsonData);
+                    if (finalResult) {
+                        setCSVData(jsonToCSV(beforeCsvJsonData));
+                    } else {
+                        alert("Unable to convert final calculated result to CSV");
+                    }
                 } catch (e) {
                     console.error("Error parsing applicant data: ", e);
                     alert("Error parsing applicant data. Refer to console logs");
@@ -152,62 +179,94 @@ const AdminDashboard = () => {
                                             Tool to help sort project applicants into teams.
                                             Ensure the Google Sheet is viewable by anyone with the link.
                                         </p>
-                                        <p style={{marginTop: "0px", wordBreak: "break-all"}}>
-                                            {`"Sheet ID" can be found from the URL of the Google Sheet (https://docs.google.com/spreadsheets/d/{Sheet ID})`}
-                                        </p>
-                                        <p style={{marginTop: "0px"}}>
-                                            {`"Sheet Name" is the name of the tab you are on (found at the bottom of Google Sheets)`}
-                                        </p>
-                                        <p style={{marginTop: "0px"}}>
-                                            Name column refers to the column in the Google Sheet that references the preferred name of an applicant
-                                        </p>
-                                        <p style={{marginTop: "0px"}}>
-                                            Project column start and end refer to the columns in the Google Sheet that reference the project preferences results
-                                        </p>
-                                        <p style={{marginTop: "0px"}}>
-                                            {`(Optional) Project name regex will extract the project name from the column title of the Google Sheet`}
-                                        </p>
-                                        <p style={{marginTop: "0px"}}>
-                                            {`(Optional) Project regex group will extract the project name from a specified index of the matched regex group, note this is 0-indexed`}
-                                        </p>
-                                        <TextField id="outlined-basic" label="Sheet ID" variant="outlined" type="text"
-                                                   name="link" fullWidth={true} value={sheetId} onChange={(event) => {
-                                                       setSheetId(event.target.value)
-                                                   }}
-                                        />
-                                        <TextField id="outlined-basic" label="Sheet Name" variant="outlined" type="text"
-                                                   name="link" fullWidth={true} value={sheetName} onChange={(event) => {
-                                                   setSheetName(event.target.value)
-                                        }}
-                                        />
-                                        <TextField id="outlined-basic" label="Name Column" variant="outlined" type="text"
-                                                   name="link" fullWidth={true} value={nameColumn} onChange={(event) => {
-                                                   setNameColumn(event.target.value)
-                                        }}
-                                        />
-                                        <TextField id="outlined-basic" label="Project Column Start" variant="outlined" type="text"
-                                                   name="link" fullWidth={true} value={projectColumnStart} onChange={(event) => {
-                                                   setProjectColumnStart(event.target.value)
-                                        }}
-                                        />
-                                        <TextField id="outlined-basic" label="Project Column End" variant="outlined" type="text"
-                                                   name="link" fullWidth={true} value={projectColumnEnd} onChange={(event) => {
-                                                   setProjectColumnEnd(event.target.value)
-                                        }}
-                                        />
-                                        <TextField id="outlined-basic" label="Project Name Regex" variant="outlined" type="text"
-                                                   name="link" fullWidth={true} value={projectNameRegex} onChange={(event) => {
-                                                   setProjectNameRegex(event.target.value)
-                                        }}
-                                        />
-                                        <TextField id="outlined-basic" label="Project Regex Group" variant="outlined" type="number"
-                                                   name="link" fullWidth={true} value={projectRegexGroup} onChange={(event) => {
-                                                   setProjectRegexGroup(parseInt(event.target.value))
-                                        }}
-                                        />
-                                        <Button onClick={() => {
-                                            sortApplicants();
-                                        }} variant="contained">✨Sort ✨</Button>
+                                        {
+                                            (csvData !== undefined) ?
+                                            <CSVLink
+                                                data={csvData}
+                                                onClick={() => {
+                                                    setCSVData(undefined);
+                                                }}
+                                                style={{
+                                                    backgroundColor: "#222220",
+                                                    color: "white",
+                                                    width: "200px",
+                                                    height: "50px",
+                                                    display: "flex",
+                                                    alignContent: "center",
+                                                    justifyContent: "center",
+                                                    alignItems: "center",
+                                                    borderRadius: "10px"
+                                                }}
+                                            >
+                                                <span>Download CSV</span>
+                                            </CSVLink> :
+                                            <>
+                                                <p style={{marginTop: "0px", wordBreak: "break-all"}}>
+                                                    {`"Sheet ID" can be found from the URL of the Google Sheet (https://docs.google.com/spreadsheets/d/{Sheet ID})`}
+                                                </p>
+                                                <TextField id="outlined-basic" label="Sheet ID" variant="outlined" type="text"
+                                                           name="sheet-id" fullWidth={true} value={sheetId} onChange={(event) => {
+                                                    setSheetId(event.target.value)
+                                                }}
+                                                />
+                                                <p style={{marginTop: "0px"}}>
+                                                    {`"Sheet Name" is the name of the tab you are on (found at the bottom of Google Sheets)`}
+                                                </p>
+                                                <TextField id="outlined-basic" label="Sheet Name" variant="outlined" type="text"
+                                                           name="sheet-name" fullWidth={true} value={sheetName} onChange={(event) => {
+                                                    setSheetName(event.target.value)
+                                                }}
+                                                />
+                                                <p style={{marginTop: "0px"}}>
+                                                    Name column refers to the column in the Google Sheet that references the preferred name of an applicant
+                                                </p>
+                                                <TextField id="outlined-basic" label="Name Column" variant="outlined" type="text"
+                                                           name="name" fullWidth={true} value={nameColumn} onChange={(event) => {
+                                                    setNameColumn(event.target.value)
+                                                }}
+                                                />
+                                                <p style={{marginTop: "0px"}}>
+                                                    {`Project preference - 1 means group people by their top choice`}
+                                                </p>
+                                                <TextField id="outlined-basic" label="Project Preference" variant="outlined" type="number"
+                                                           name="project-preference" fullWidth={true} value={projectPreferenceNumber} onChange={(event) => {
+                                                    setProjectPreferenceNumber(parseInt(event.target.value))
+                                                }}
+                                                />
+                                                <p style={{marginTop: "0px"}}>
+                                                    Project column start and end refer to the columns in the Google Sheet that reference the project preferences results
+                                                </p>
+                                                <TextField id="outlined-basic" label="Project Column Start" variant="outlined" type="text"
+                                                           name="project-column-start" fullWidth={true} value={projectColumnStart} onChange={(event) => {
+                                                    setProjectColumnStart(event.target.value)
+                                                }}
+                                                />
+                                                <TextField id="outlined-basic" label="Project Column End" variant="outlined" type="text"
+                                                           name="project-column-end" fullWidth={true} value={projectColumnEnd} onChange={(event) => {
+                                                    setProjectColumnEnd(event.target.value)
+                                                }}
+                                                />
+                                                <p style={{marginTop: "0px"}}>
+                                                    {`(Optional) Project name regex will extract the project name from the column title of the Google Sheet`}
+                                                </p>
+                                                <TextField id="outlined-basic" label="Project Name Regex" variant="outlined" type="text"
+                                                           name="project-name-regex" fullWidth={true} value={projectNameRegex} onChange={(event) => {
+                                                    setProjectNameRegex(event.target.value)
+                                                }}
+                                                />
+                                                <p style={{marginTop: "0px"}}>
+                                                    {`(Optional) Project regex group will extract the project name from a specified index of the matched regex group, note this is 0-indexed`}
+                                                </p>
+                                                <TextField id="outlined-basic" label="Project Regex Group" variant="outlined" type="number"
+                                                           name="project-regex-group" fullWidth={true} value={projectRegexGroup} onChange={(event) => {
+                                                    setProjectRegexGroup(parseInt(event.target.value))
+                                                }}
+                                                />
+                                                <Button fullWidth={true} onClick={() => {
+                                                    sortApplicants();
+                                                }} variant="contained">✨Sort ✨</Button>
+                                            </>
+                                        }
                                     </Box>
                                 </Box>
                             </div>
