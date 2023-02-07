@@ -34,6 +34,10 @@ const navList = [
         name: "Contact",
         path: "/contact"
     },
+    {
+        name: "Members",
+        path: "/members"
+    },
 ]
 
 const drawerWidth = 240;
