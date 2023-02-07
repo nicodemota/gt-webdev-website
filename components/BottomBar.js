@@ -1,11 +1,33 @@
+import { Grid, Typography } from "@mui/material";
 import React, {Component} from "react";
+import { footer } from "../data/homeData";
 
+// Bottom bar with Instagram + Discord + Github Logo, along with some cookie and milk XD
 class BottomBar extends Component {
     render() {
         return (
-            <div>
-                Bottom Bar
-            </div>
+            <Grid container>
+                <Grid className="bottomBarGrid bottomBarTopMargin" xs={12} md={12}>
+                    <div>
+                        <a href="https://tenor.com/view/dog-perro-perro-bailando-dancing-dog-perro-chistoso-gif-16573914">
+                            <img src="Instagram.png" className="bottomBarImg" />
+                        </a>
+                        <span style={{paddingRight: "5vw"}} />
+                        <a href="https://discord.gg/XxCyRSMT6g">
+                            <img src="Discord.png" className="bottomBarImg"/>
+                        </a>
+                        <span style={{paddingRight: "5vw"}} />
+                        <a href="https://github.com/gt-webdev">
+                            <img src="Github.png" className="bottomBarImg"/>
+                        </a>
+                    </div>
+                </Grid>
+                <Grid className="bottomBarGrid bottomBarBottomMargin" xs={12} md={12}>
+                    <Typography variant="h6">
+                        {footer}
+                    </Typography>
+                </Grid>
+            </Grid>
         );
     }
 }

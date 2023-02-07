@@ -23,8 +23,8 @@ const navList = [
         path: "/schedule"
     },
     {
-        name: "Join",
-        path: "/join"
+        name: "About Us",
+        path: "/aboutus"
     },
     {
         name: "Projects",

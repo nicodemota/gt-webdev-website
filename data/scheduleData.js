@@ -2,12 +2,12 @@ let meetData = "We meet every Tuesday from 6:30 P.M. to around 7:30 P.M. Atlanta
 
 let scheduleData = [
     {
-        "date": "1/13/2022",
+        "date": "Sun 1/13/2021 6:30PM",
         "agenda": "Officer Form Due at 11:59 P.M.",
         "link": "N/A"
     },
     {
-        "date": "1/18/2022",
+        "date": "Sun 1/20/2021 6:30PM",
         "agenda": "Project Teams Informational Meeting",
         "link": "https://bluejeans.com/s/K1cE129@jLr/"
     },

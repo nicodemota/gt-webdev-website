@@ -1,96 +1,63 @@
 import React, {Component} from "react";
 import NavBar from "../components/NavBar";
-import {currentData,previousData} from '../data/projectData.js';
 import BottomBar from "../components/BottomBar";
 import Head from 'next/head'
-import {Grid, Typography} from "@mui/material";
+import {Grid, Typography, Box} from "@mui/material";
 
-class Projects extends Component {
-    render() {
-        return (
-            <div>
-                <Head>
-                    <title>Projects | GT WebDev</title>
-                </Head>
-                <NavBar />
-                <div className="main">
-                    <CurrentProjects />
-                    <br />
-                    <PreviousProjects />
-                </div>
-                <BottomBar />
-            </div>
-        );
-    }
-}
+import {currentData,previousData} from '../data/projectData.js';
 
-class CurrentProjects extends Component {
-    render() {
-        return (
-            <div>
-                <Typography variant="h4" className="title">current projects</Typography>
-                    {currentData.map(semester => (
-                        <div className="indented1" key={`${semester}`}>
-                            <Typography variant="h6">{semester.semester}</Typography>
-                            <Grid container spacing={3}>
-                                {semester.projects.map(project => (
-                                    <Project name={project.name} description={project.description}
-                                      members={project.members} manager={project.manager}
-                                      key={`${project.name}-${project.description}`} />
-                                ))}
-                            </Grid>
-                        </div>
-                    ))}
-            </div>
-        );
-    }
-}
+const Projects = () => {
 
-class PreviousProjects extends Component {
-    render() {
-        return (
-            <div>
-                <Typography variant="h4" className="title">previous projects</Typography>
-                    {previousData.map(semester => (
-                        <div className="indented" key={`${semester}`}>
-                            <Typography variant="h6">{semester.semester}</Typography>
-                            <Grid container spacing={3}>
-                                {semester.projects.map(project => (
-                                    <Project name={project.name} description={project.description}
-                                      members={project.members} manager={project.manager}
-                                      key={`${project.name}-${project.description}`}/>
-                                ))}
-                            </Grid>
-                        </div>
-                    ))}
-            </div>
-        );
-    }
-}
+    const commonStyles = {
+        bgcolor: '#202022',
+        m: 1,
+        width: '15rem',
+        height: '15rem',
+      };
 
-class Project extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            "name": this.props.name,
-            "description": this.props.description,
-            "manager": this.props.manager,
-            "members": this.props.members
-        }
-    }
-    render() {
-        let memberList = this.state.members.join(", ");
-        return (
-            <Grid item xs={6} className="centered">
-                <div className="tab">
-                    <Typography variant="body1"><b>{this.state.name}</b></Typography>
-                    <Typography variant="body1">{this.state.description}</Typography>
-                    <Typography variant="body1">Manager: {this.state.manager}</Typography>
-                    {/* <Typography variant="body1">Members: {memberList}</Typography> */}
-                </div>
+    return(
+        <div>
+            <Head>
+                <title>Projects | GT WebDev</title>
+            </Head>
+            <NavBar />
+
+            {/* Current Semster Project List */}
+            <Typography variant="h3" className="projectSectionTitle">
+                {currentData[0]['semester']}
+            </Typography>
+            <Grid container columnGap={2} className="projectSectionPadding">
+                {currentData[0]['projects'].map((cur, ind) => {
+                    return(
+                        <Box sx={{ ...commonStyles, borderRadius: 5 }} className="projectBoxInfo projectBoxTxt">
+                            {cur['name']}
+                        </Box>
+                    )
+                })}
             </Grid>
-        );
-    }
+
+            {/* List of previous semester projects */}
+            {previousData.map((cur, ind) => {
+                return (
+                    <div>
+                        <Typography variant="h3" className="projectSectionTitle">
+                            {cur['semester']}
+                        </Typography>
+                        <Grid container columnGap={2} className="projectSectionPadding">
+                            {cur['projects'].map((cur, ind) => {
+                                return(
+                                    <Box sx={{ ...commonStyles, borderRadius: 5 }} className="projectBoxInfo projectBoxTxt">
+                                        {cur['name']}
+                                    </Box>
+                                )
+                            })}
+                        </Grid>
+                    </div>
+                )
+            })}
+            <BottomBar />
+        </div>
+    )
 }
 
-export default Projects;
+export default Projects
