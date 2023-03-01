@@ -5,7 +5,6 @@ import Head from 'next/head'
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import {scheduleData} from '../data/scheduleData.js';
-import { Grid, Typography } from "@mui/material";
 
 const Schedule = () => {
 
