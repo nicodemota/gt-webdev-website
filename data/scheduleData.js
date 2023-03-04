@@ -2,14 +2,24 @@ let meetData = "We meet every Tuesday from 6:30 P.M. to around 7:30 P.M. Atlanta
 
 let scheduleData = [
     {
-        "date": "3/30/2023",
-        "agenda": "Project meeting, Git/GitHub tutorial",
-        "link": "?"
+        "datelocation": "February 24, 2023 - Howey L4",
+        "title": "General Board Meeting 1",
+        "description": "Project meeting, Git/GitHub tutorial"
     },
     {
-        "date": "4/6/2023",
-        "agenda": "Project meeting, Python Flask tutorial",
-        "link": "?"
+        "datelocation": "February 24, 2023 - Howey L4",
+        "title": "General Board Meeting 2",
+        "description": "Project meeting, Git/GitHub tutorial"
+    },
+    {
+        "datelocation": "February 24, 2023 - Howey L4",
+        "title": "General Board Meeting 3",
+        "description": "Project meeting, Git/GitHub tutorial"
+    }, 
+    {
+        "datelocation": "February 24, 2023 - Howey L4",
+        "title": "General Board Meeting 4",
+        "description": "Project meeting, Git/GitHub tutorial"
     }
 ];
 
