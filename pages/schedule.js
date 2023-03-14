@@ -5,6 +5,8 @@ import Head from 'next/head'
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import {scheduleData} from '../data/scheduleData.js';
+import { FaDesktop } from 'react-icons/fa';
+
 
 const Schedule = () => {
 
@@ -15,6 +17,7 @@ const Schedule = () => {
             return txt
         return `${res[0]}\n${res[1]}\n${res[2]}`
     }
+
 
     return(
         <div>
@@ -30,8 +33,8 @@ const Schedule = () => {
                         contentStyle={{ background: '#f0cd42', color: '#222220' }}
                         contentArrowStyle={{ borderRight: '7px solid #f0cd42' }}
                         date=""
-                        // iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                        // icon={< WorkIcon />}
+                        iconStyle={{ background: 'rgb(60, 60, 57)', color: '#fff' }}
+                        icon = {< FaDesktop />}
                         >
                         <h3 className="vertical-timeline-element-title"> {cur['title']} </h3>
                         <h4 className="vertical-timeline-element-subtitle">  {cur['datelocation']} </h4>
