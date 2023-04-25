@@ -7,8 +7,18 @@ import firebaseApp from "../helpers/firebase";
 import {useRouter} from 'next/router'
 import {readRemoteFile, jsonToCSV} from "react-papaparse";
 import { CSVLink } from "react-csv";
+import { scheduleData } from "../data/scheduleData";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
+
+
+
+
 
 const AdminDashboard = () => {
+    
+
+    
     const [adminConfirmed, setAdminConfirmed] = useState(false);
 
     // auto-sorting tool
@@ -20,6 +30,11 @@ const AdminDashboard = () => {
     const [projectNameRegex, setProjectNameRegex] = useState(`\\[([^\\]]+)]`);
     const [projectRegexGroup, setProjectRegexGroup] = useState(1);
     const [csvData, setCSVData] = useState(undefined);
+
+    const [eventName, setEventName] = useState(' ');
+    const [eventDate, setEventDate] = useState(' ');
+    const [eventLocation, setEventLocation] = useState(' ');
+    const [eventDescription, setEventDescription] = useState(' ');
 
     const auth = getAuth(firebaseApp);
     const router = useRouter();
@@ -57,6 +72,33 @@ const AdminDashboard = () => {
         }
         return output - 1;
     };
+
+    const addToSchedule = async () => {
+        try {
+           
+            const firebaseConfig = {
+                apiKey: "AIzaSyCS2s7GzBGZ4-yKJ_q4d-vdqDNZQpD8M70",
+                authDomain: "gt-webdev-website.firebaseapp.com",
+                projectId: "gt-webdev-website",
+                storageBucket: "gt-webdev-website.appspot.com",
+                messagingSenderId: "562784179730",
+                appId: "1:562784179730:web:37e4b2c5ea06f7f5e26acb",
+                measurementId: "G-1QX4LKFHCS"
+            }
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+            const scheduleRef = collection(db, "schedule");
+            await setDoc(doc(scheduleRef, eventDate + eventLocation
+                ), {
+                datelocation: eventDate + " - " + eventLocation,
+                title: eventName,
+                description: eventDescription                
+            })
+        } catch (e) {
+            console.log(e)
+        }
+        
+    }
 
     const sortApplicants = () => {
         // https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}
@@ -174,6 +216,37 @@ const AdminDashboard = () => {
                                 <Box sx={{display: 'flex', flexDirection: 'column', width: "100%", rowGap: '10px', alignItems: "center"}}>
                                     <h1 style={{textAlign: "center"}}>Admin Dashboard</h1>
                                     <Box sx={{display: 'flex', flexDirection: 'column', width: "70%", maxWidth: "600px", alignItems: "center", rowGap: "10px"}}>
+                                        <h2> Schedule </h2>
+                                        <p style={{marginTop: "0px"}}>
+                                            Tool to add events to the schedule page.
+                                        </p>
+                                        <TextField id="outlined-basic" label="Event Title" variant="outlined" type="text"
+                                                    name="eventName" fullWidth={true} value={eventName} onChange={(event) => {
+                                            setEventName(event.target.value)
+                                        }}
+                                        />
+                                         <TextField id="outlined-basic" label="Date (eg. January 1, 2023)" variant="outlined" type="text"
+                                                    name="eventDate" fullWidth={true} value={eventDate} onChange={(event) => {
+                                            setEventDate(event.target.value)
+                                        }}
+                                        />
+                                        <TextField id="outlined-basic" label="Location" variant="outlined" type="text"
+                                                    name="eventLocation" fullWidth={true} value={eventLocation} onChange={(event) => {
+                                            setEventLocation(event.target.value)
+                                        }}
+                                        />
+                                        <TextField id="outlined-basic" label="Description" variant="outlined" type="text"
+                                                    name="eventDescription" fullWidth={true} value={eventDescription} onChange={(event) => {
+                                            setEventDescription(event.target.value)
+                                        }}
+                                        />
+                                         <Button fullWidth={true} onClick={() => {
+                                                    addToSchedule();
+                                                }} variant="contained">✨Create Event ✨</Button>
+
+
+
+
                                         <h2>Applicant Auto-Sorter</h2>
                                         <p style={{marginTop: "0px"}}>
                                             Tool to help sort project applicants into teams.
