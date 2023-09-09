@@ -12,13 +12,18 @@ const AdminDashboard = () => {
     const [adminConfirmed, setAdminConfirmed] = useState(false);
 
     // auto-sorting tool
-    const [sheetId, setSheetId] = useState('1l4CCiWWuz0y40qaZ9rxIw2tqL-wb-N0VJKrEbtoQWIw');
-    const [sheetName, setSheetName] = useState('Form Responses 2');
+    const [pointsForFormerApplicant, setPointsForFormerApplicant] = useState(1000);
+    const [pointsForFormerMember, setPointsForFormerMember] = useState(800);
+    const [pointsPerWord, setPointsPerWord] = useState(1);
+
+    const [sheetId, setSheetId] = useState('1eMMkaZPDnYvdCXVUvtI4P1QEDBlYmoMzZL3XOKJqaWE');
+    const [sheetName, setSheetName] = useState('Form Responses 1');
     const [nameColumn, setNameColumn] = useState('B');
     const [projectPreferenceNumber, setProjectPreferenceNumber] = useState(1);
-    const [projectColumns, setProjectColumns] = useState('["I", "J", "K", "L", "M", "N", "O", "P", "Q", "BE", "BG", "BH", "BI"]');
-    const [projectNameRegex, setProjectNameRegex] = useState(`\\[([^\\]]+)]`);
-    const [projectRegexGroup, setProjectRegexGroup] = useState(1);
+    const [formerMemberColumn, setFormerMemberColumn] = useState('N');
+    const [repeatedApplicationColumn, setRepeatedApplicationsColumn] = useState('P');
+    const [projectColumns, setProjectColumns] = useState('["I", "J", "K", "L", "M"]');
+    const [essayColumns, setEssayColumns] = useState('["AK", "AL"]');
     const [csvData, setCSVData] = useState(undefined);
 
     const auth = getAuth(firebaseApp);
@@ -58,79 +63,138 @@ const AdminDashboard = () => {
         return output - 1;
     };
 
+    function countWords(str) {
+        if (str) {
+            return str.trim().split(/\s+/).length;
+        }
+        return 0;
+    }
+
     const sortApplicants = () => {
         // https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}
         const csvURL = `https://docs.google.com/spreadsheets/d/${encodeURI(sheetId)}/gviz/tq?tqx=out:csv&sheet=${encodeURI(sheetName)}`;
         readRemoteFile(csvURL, {
             complete: (results) => {
                 try {
-                    // convert column letters to index (ex: A->0, B->1, etc.)
-                    const nameColumnNumber = excelSheetColumnNumber(nameColumn);
+                    // get indices for essay responses
+                    let essayResponseColumnIdxs = [];
+                    const essayColumnsParsed = JSON.parse(essayColumns);
+                    for (let i = 0; i < essayColumnsParsed.length; i++) {
+                        essayResponseColumnIdxs.push(excelSheetColumnNumber(essayColumnsParsed[i]));
+                    }
 
-                    // successfully fetched data of Google Sheet
+                    // get index for name response
+                    const nameColumnIdx = excelSheetColumnNumber(nameColumn);
+
+                    // get index for nth project choice response
+                    const nthProjectChoiceColumn = JSON
+                        .parse(projectColumns)[parseInt(`${projectPreferenceNumber}`) - 1];
+                    const nthProjectChoiceColumnIdx
+                        = excelSheetColumnNumber(nthProjectChoiceColumn);
+
+                    // get index for former applicant response
+                    const formerApplicantIdx = excelSheetColumnNumber(repeatedApplicationColumn);
+
+                    // get index for former member response
+                    const formerMemberIdx = excelSheetColumnNumber(formerMemberColumn);
+
+                    // keep track of projects being offered
+                    let projects = new Set();
+
+                    // go through entire sheet and store all applicant info
+                    const applicants = [];
                     const data = results?.data;
-                    const formQuestions = data[0];
-
-                    // extract project names and assign them to project groupings
-                    const projectGroupings = {};
-                    for (const columnLetter of JSON.parse(projectColumns)) {
-                        const column = excelSheetColumnNumber(columnLetter);
-                        let projectName = formQuestions[column];
-                        const projectNameRegexChecker = new RegExp(projectNameRegex, "g");
-                        const regexResult = projectNameRegexChecker.exec(projectName);
-                        if (regexResult) {
-                            if (regexResult[projectRegexGroup]) {
-                                projectName = regexResult[projectRegexGroup];
-                            } else if (regexResult[0]) {
-                                projectName = regexResult[0];
-                            } else {
-                                console.error("Unable to extract project name from regex result:", regexResult);
-                            }
+                    for (let rowIdx = 1; rowIdx < data.length; rowIdx++) {
+                        const sheetRow = data[rowIdx];
+                        const name = sheetRow[nameColumnIdx];
+                        const nthProjectChoice = sheetRow[nthProjectChoiceColumnIdx];
+                        projects.add(nthProjectChoice);
+                        const essayResponses = [];
+                        for (let i = 0; i < essayResponseColumnIdxs.length; i++) {
+                            essayResponses.push(sheetRow[essayResponseColumnIdxs[i]] || "");
                         }
-                        projectGroupings[projectName] = [];
+                        const isFormerApplicant = sheetRow[formerApplicantIdx].toLowerCase().trim() === "yes";
+                        const isFormerMember = sheetRow[formerMemberIdx].toLowerCase().trim() === "yes";
+                        const applicant = {
+                            name,
+                            nthProjectChoice,
+                            essayResponses,
+                            isFormerApplicant,
+                            isFormerMember
+                        }
+                        applicants.push(applicant);
                     }
-                    const projectNames = Object.keys(projectGroupings);
 
-                    // associate people with projects they chose as their nth preference
+                    // convert from set to list for projects
+                    projects = Array.from(projects);
+
+                    // go through applicants and group them under project while assigning point values
+                    for (let applicantIdx = 0; applicantIdx < applicants.length; applicantIdx++) {
+                        const applicant = applicants[applicantIdx];
+                        applicant.points = 0;
+
+                        if (applicant.isFormerApplicant) {
+                            applicant.points += pointsForFormerApplicant;
+                        }
+
+                        if (applicant.isFormerMember) {
+                            applicant.points += pointsForFormerMember;
+                        }
+
+                        for (let i = 0; i < applicant.essayResponses.length; i++) {
+                            applicant.points += countWords(applicant.essayResponses[i]) * pointsPerWord;
+                        }
+
+                        applicants[applicantIdx] = applicant;
+                    }
+
+                    // sort applicants by points
+                    applicants.sort(function(first, second) {
+                        return second.points - first.points;
+                    });
+
+                    console.debug("projects", projects);
+                    console.debug("applicants", applicants);
+
+                    // categorize applicants by projects and keep them sorted by points
+                    const teamPlacements = {};
                     let mostAmountOfPeopleInGrouping = 0;
-                    for (let row = 1; row < data.length; row++) {
-                        for (let k = 0; k < JSON.parse(projectColumns).length; k++) {
-                            const columnLetter = JSON.parse(projectColumns)[k];
-                            const column = excelSheetColumnNumber(columnLetter);
-                            try {
-                                if (parseInt(data[row][column]) === projectPreferenceNumber) {
-                                    const projectName = projectNames[k];
-                                    projectGroupings[projectName].push(data[row][nameColumnNumber]);
-                                    mostAmountOfPeopleInGrouping = Math.max(mostAmountOfPeopleInGrouping, projectGroupings[projectName].length);
-                                }
-                            } catch (e) {
-                                // could not parse int of data - could be empty or something
-                                // don't do anything cuz we don't care about this case
+                    for (let i = 0; i < projects.length; i++) {
+                        const projectName = projects[i];
+                        if (!teamPlacements[projectName]) {
+                            teamPlacements[projectName] = [];
+                        }
+                        for (let j = 0; j < applicants.length; j++) {
+                            const applicant = applicants[j];
+                            if (applicant.nthProjectChoice === projectName) {
+                                teamPlacements[projectName].push(applicant.name);
+                                mostAmountOfPeopleInGrouping = Math.max(mostAmountOfPeopleInGrouping,
+                                    teamPlacements[projectName].length);
                             }
                         }
                     }
 
-                    // pad arrays in preparation to export as csv
-                    for (let i = 0; i < projectNames.length; i++) {
-                        const projectName = projectNames[i];
-                        while (projectGroupings[projectName].length < mostAmountOfPeopleInGrouping) {
-                            projectGroupings[projectName].push("");
-                        }
+                    console.debug("team placements", teamPlacements);
+
+                    let csvData = [];
+                    for (let i = 0; i < projects.length; i++) {
+                        const projectName = projects[i];
+                        csvData.push(teamPlacements[projectName]);
                     }
 
-                    // convert format of data in preparation to export as csv
-                    const beforeCsvJsonData = [];
-                    for (let j = 0; j < mostAmountOfPeopleInGrouping; j++) {
-                        const obj = {};
-                        for (let i = 0; i < projectNames.length; i++) {
-                            const projectName = projectNames[i];
-                            obj[projectName] = projectGroupings[projectName][j]
-                        }
-                        beforeCsvJsonData.push(obj);
-                    }
-                    const finalResult = jsonToCSV(beforeCsvJsonData);
-                    if (finalResult) {
-                        setCSVData(jsonToCSV(beforeCsvJsonData));
+                    console.debug("csv data", csvData);
+                    csvData = csvData[0].map((_, colIndex) => csvData.map(row => row[colIndex]));
+                    console.debug("csv data transposed", csvData);
+
+                    const csv = jsonToCSV({
+                        "fields": projects,
+                        "data": csvData
+                    });
+
+                    console.debug("csv", csv);
+
+                    if (csv) {
+                        setCSVData(csv);
                     } else {
                         alert("Unable to convert final calculated result to CSV");
                     }
@@ -176,7 +240,7 @@ const AdminDashboard = () => {
                                     <Box sx={{display: 'flex', flexDirection: 'column', width: "70%", maxWidth: "600px", alignItems: "center", rowGap: "10px"}}>
                                         <h2>Applicant Auto-Sorter</h2>
                                         <p style={{marginTop: "0px"}}>
-                                            Tool to help sort project applicants into teams.
+                                            Tool to help sort project applicants into teams (applications should still be manually reviewed!).
                                             Ensure the Google Sheet is viewable by anyone with the link.
                                         </p>
                                         {
@@ -234,6 +298,30 @@ const AdminDashboard = () => {
                                                 }}
                                                 />
                                                 <p style={{marginTop: "0px", width: "100%"}}>
+                                                    Column of the Google Sheet that refers to whether someone was a former member
+                                                </p>
+                                                <TextField id="outlined-basic" label="Former Member Column" variant="outlined" type="text"
+                                                           name="former-member" fullWidth={true} value={formerMemberColumn} onChange={(event) => {
+                                                    setFormerMemberColumn(event.target.value)
+                                                }}
+                                                />
+                                                <p style={{marginTop: "0px", width: "100%"}}>
+                                                    Column of the Google Sheet that refers to whether someone has applied to a project in the past
+                                                </p>
+                                                <TextField id="outlined-basic" label="Applied Before Column" variant="outlined" type="text"
+                                                           name="applied-before" fullWidth={true} value={repeatedApplicationColumn} onChange={(event) => {
+                                                    setRepeatedApplicationsColumn(event.target.value)
+                                                }}
+                                                />
+                                                <p style={{marginTop: "0px", width: "100%"}}>
+                                                    Columns of the Google Sheet that refer to essay questions
+                                                </p>
+                                                <TextField id="outlined-basic" label="Essay Questions Columns" variant="outlined" type="text"
+                                                           name="essay-columns" fullWidth={true} value={essayColumns} onChange={(event) => {
+                                                           setEssayColumns(event.target.value)
+                                                }}
+                                                />
+                                                <p style={{marginTop: "0px", width: "100%"}}>
                                                     Columns of the Google Sheet that refer to project preferences
                                                 </p>
                                                 <TextField id="outlined-basic" label="Project Columns" variant="outlined" type="text"
@@ -241,22 +329,34 @@ const AdminDashboard = () => {
                                                            setProjectColumns(event.target.value)
                                                 }}
                                                 />
+
                                                 <p style={{marginTop: "0px", width: "100%"}}>
-                                                    {`(Optional) Project name regex will extract the project name from the column title of the Google Sheet`}
+                                                    {`Points per word`}
                                                 </p>
-                                                <TextField id="outlined-basic" label="Project Name Regex" variant="outlined" type="text"
-                                                           name="project-name-regex" fullWidth={true} value={projectNameRegex} onChange={(event) => {
-                                                    setProjectNameRegex(event.target.value)
+                                                <TextField id="outlined-basic" label="Points Per Word" variant="outlined" type="number"
+                                                           name="ppw" fullWidth={true} value={pointsPerWord} onChange={(event) => {
+                                                    setPointsPerWord(parseInt(event.target.value))
                                                 }}
                                                 />
+
                                                 <p style={{marginTop: "0px", width: "100%"}}>
-                                                    {`(Optional) Project regex group will extract the project name from a specified index of the matched regex group, note this is 0-indexed`}
+                                                    {`Points for former applicants`}
                                                 </p>
-                                                <TextField id="outlined-basic" label="Project Regex Group" variant="outlined" type="number"
-                                                           name="project-regex-group" fullWidth={true} value={projectRegexGroup} onChange={(event) => {
-                                                    setProjectRegexGroup(parseInt(event.target.value))
+                                                <TextField id="outlined-basic" label="Points for Former Applicants" variant="outlined" type="number"
+                                                           name="pffa" fullWidth={true} value={pointsForFormerApplicant} onChange={(event) => {
+                                                    setPointsForFormerApplicant(parseInt(event.target.value))
                                                 }}
                                                 />
+
+                                                <p style={{marginTop: "0px", width: "100%"}}>
+                                                    {`Points for former members`}
+                                                </p>
+                                                <TextField id="outlined-basic" label="Points for Former Members" variant="outlined" type="number"
+                                                           name="pffm" fullWidth={true} value={pointsForFormerMember} onChange={(event) => {
+                                                    setPointsForFormerMember(parseInt(event.target.value))
+                                                }}
+                                                />
+
                                                 <Button fullWidth={true} onClick={() => {
                                                     sortApplicants();
                                                 }} variant="contained">✨Sort ✨</Button>
