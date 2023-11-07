@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import Board from 'react-ui-kanban';
 import AdminNavBar from "../components/AdminNavBar";
 import Head from 'next/head'
-import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import { Select, MenuItem, FormControl, InputLabel, Button } from "@mui/material";
 
 function sortMembersPage() {
+
+    function handleClick() {
+        
+    }
 
     const data = {
         lanes: [
@@ -13,7 +17,7 @@ function sortMembersPage() {
                 title: 'Project 1',
                 style: { display: "flex" },
                 cards: [
-                    {id: 'card1', title: 'Applicant 1', description: '...', label: '...'},
+                    {id: 'card1', title: 'Applicant 1', description: '...', label: '...', onClick: "handleClick"},
                     {id: 'card2', title: 'Applicant 2', description: '...', label: '...'}
                 ]
             },
@@ -37,7 +41,7 @@ function sortMembersPage() {
             },
             {
                 id: 'lane4',
-                title: 'Rejected',
+                title: 'Not Accepted',
                 style: { backgroundColor: '#F08080', display: "flex" },
                 cards: [
                     {id: 'card5', title: 'Applicant 5', description: '...', label: '...'},
@@ -63,7 +67,12 @@ function sortMembersPage() {
                     </Select>
                 </FormControl>
                 <div>
-                    <Board data={data} draggable="true" style={{display: "flex", flexWrap: "wrap", backgroundColor: 'gray'}}></Board>
+                    <Board data={data} draggable="true" style={{overflowY: "scroll", backgroundColor: 'gray'}}></Board>
+                </div>
+                <div style={{margin: "10px auto", width: "35%", display: "flex", flexDirection: "column", gap: "10px", justifyContent: "center"}}>
+                    <Button variant="contained">Generate Rejection Email List</Button>
+                    <Button variant="contained">Generate Per-Team Acceptance Email List</Button>
+                    <Button variant="contained">Back</Button>
                 </div>
             </div>
         </div>
