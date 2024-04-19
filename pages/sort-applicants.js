@@ -14,27 +14,37 @@ function sortMembersPage() {
     const [projects, setProjects] = useState([]);
 
     React.useEffect(async () => {
-        const q = query(collection(db, "members"), where("semester", "==", "Fall 2023"));
+        const q = query(collection(db, "applicants"), where("semester", "==", "Fall 2023")); // Change to selected semester
         const querySnapshotApplicants = await getDocs(q);
 
+        // Used this kanban board library: https://www.npmjs.com/package/react-ui-kanban?activeTab=readme
+
+        // Creates a card for each applicant
         querySnapshotApplicants.forEach((doc) => {
+            let applicantProjects = "";
+            for (let i = 0; i < doc.data().projects.length; i++) {
+                applicantProjects += doc.data().projects[i] + ", ";
+            }
+            applicantProjects = applicantProjects.substring(0, applicantProjects.length - 2);
             setApplicants((applicants) => {
-                return [...applicants, {id: doc.id, title: doc.data().name}]
+                return [...applicants, {id: doc.id, title: doc.data().name, description: "Is former applicant: " + doc.data().isFormerApplicant + "\nIs former member: " + doc.data().isFormerMember + "\nProjects: " + applicantProjects}]
             });
         });
 
+        // Creates a lane for each project
         const querySnapshotProjects = await getDocs(collection(db, "projects"));
         querySnapshotProjects.forEach((doc) => {
             setProjects((projects) => {
                 return [
                     ...projects,
-                    {id: doc.id, title: doc.data().name, style: {display: 'flex'}, cards: [{id: doc.data().members[0].id, title: doc.data().members[0].name}]}
-                    // only works if there's already a card there
+                    {id: doc.id, title: doc.data().name, style: {display: 'flex'}, cards: []}
                 ]
             });
         })
     }, []);
 
+    // Data to pass into Board
+    // All applicants are initially added the "Not Accepted" lane
     const data = {
         lanes: projects.concat(
             {
@@ -45,6 +55,10 @@ function sortMembersPage() {
             }
         )
     }
+
+    // handleCardClick(cardId, metadata, laneID) {
+        // Create modal with applicant essay responses & projects
+    // }
 
     return (
         <div>
@@ -62,16 +76,27 @@ function sortMembersPage() {
                     </Select>
                 </FormControl>
                 <div>
-                    <Board data={data} draggable="true" style={{overflowY: "scroll", backgroundColor: 'gray'}}></Board>
+                    <Board
+                        data={data}
+                        draggable="true"
+                        style={{overflowY: "scroll", backgroundColor: 'gray'}}
+                        // onCardClick={handleCardClick}
+                    />
                 </div>
                 <div style={{margin: "10px auto", width: "35%", display: "flex", flexDirection: "column", gap: "10px", justifyContent: "center"}}>
-                    <Button variant="contained">Generate Rejection Email List</Button>
-                    <Button variant="contained">Generate Per-Team Acceptance Email List</Button>
-                    <Button variant="contained">Back</Button>
+                    <Button variant="contained">Generate Rejection Email List</Button> {/* Incomplete */}
+                    <Button variant="contained">Generate Per-Team Acceptance Email List</Button> {/* Incomplete */}
+                    <Button variant="contained">Back</Button> {/* Incomplete */}
                 </div>
             </div>
         </div>
     )
+}
+
+function applicantModal() {
+    return <div>
+        <p>Applicant</p>
+    </div>
 }
 
 export default sortMembersPage;
