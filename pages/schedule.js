@@ -73,10 +73,12 @@ const Schedule = () => {
                             <span>{cur.datetime}</span>
                         </div>
                         <div className="vertical-timeline-element-subtitle" style={{marginTop: '3px'}}> 
-                            <FaMapMarkerAlt style={{ fontSize: '17px', margin: '0 6 0 -1'}} />
-                            <span>{cur.location}</span>
+                            <a href={googleMapsUrl} target="_blank">
+                                <FaMapMarkerAlt style={{ fontSize: '17px', margin: '0 6 0 -1'}} />
+                                <span>{cur.location}</span>
+                            </a>
                         </div>
-                        <a href={googleMapsUrl} target="_blank">Google Maps</a>
+                        
                     </VerticalTimelineElement>
                    )
                })}
