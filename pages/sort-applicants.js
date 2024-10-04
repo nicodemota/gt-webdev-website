@@ -8,18 +8,14 @@ import { getFirestore, collection, query, where, getDocs } from "firebase/firest
 
 function sortMembersPage() {
 
-    // const app = initializeApp(firebaseConfig);
     const db = getFirestore(firebaseApp);
     const [applicants, setApplicants] = useState([]);
     const [projects, setProjects] = useState([]);
 
     React.useEffect(async () => {
-        const q = query(collection(db, "applicants"), where("semester", "==", "Fall 2023")); // Change to selected semester
+        const q = query(collection(db, "applicants"), where("semester", "==", "Fall 2023"));
         const querySnapshotApplicants = await getDocs(q);
 
-        // Used this kanban board library: https://www.npmjs.com/package/react-ui-kanban?activeTab=readme
-
-        // Creates a card for each applicant
         querySnapshotApplicants.forEach((doc) => {
             let applicantProjects = "";
             for (let i = 0; i < doc.data().projects.length; i++) {
@@ -31,7 +27,6 @@ function sortMembersPage() {
             });
         });
 
-        // Creates a lane for each project
         const querySnapshotProjects = await getDocs(collection(db, "projects"));
         querySnapshotProjects.forEach((doc) => {
             setProjects((projects) => {
@@ -43,8 +38,6 @@ function sortMembersPage() {
         })
     }, []);
 
-    // Data to pass into Board
-    // All applicants are initially added the "Not Accepted" lane
     const data = {
         lanes: projects.concat(
             {
@@ -55,10 +48,6 @@ function sortMembersPage() {
             }
         )
     }
-
-    // handleCardClick(cardId, metadata, laneID) {
-        // Create modal with applicant essay responses & projects
-    // }
 
     return (
         <div>
@@ -80,13 +69,12 @@ function sortMembersPage() {
                         data={data}
                         draggable="true"
                         style={{overflowY: "scroll", backgroundColor: 'gray'}}
-                        // onCardClick={handleCardClick}
                     />
                 </div>
                 <div style={{margin: "10px auto", width: "35%", display: "flex", flexDirection: "column", gap: "10px", justifyContent: "center"}}>
-                    <Button variant="contained">Generate Rejection Email List</Button> {/* Incomplete */}
-                    <Button variant="contained">Generate Per-Team Acceptance Email List</Button> {/* Incomplete */}
-                    <Button variant="contained">Back</Button> {/* Incomplete */}
+                    <Button variant="contained">Generate Rejection Email List</Button>
+                    <Button variant="contained">Generate Per-Team Acceptance Email List</Button>
+                    <Button variant="contained">Back</Button>
                 </div>
             </div>
         </div>
