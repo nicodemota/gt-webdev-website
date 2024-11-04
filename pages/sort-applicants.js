@@ -13,21 +13,29 @@ function sortMembersPage() {
     const [projects, setProjects] = useState([]);
 
     React.useEffect(async () => {
-        const q = query(collection(db, "applicants"), where("semester", "==", "Fall 2023"));
+        const q = query(collection(db, "applicants"), where("isFormerMember", "==", false));
         const querySnapshotApplicants = await getDocs(q);
 
         querySnapshotApplicants.forEach((doc) => {
             let applicantProjects = "";
+
             for (let i = 0; i < doc.data().projects.length; i++) {
                 applicantProjects += doc.data().projects[i] + ", ";
             }
+
             applicantProjects = applicantProjects.substring(0, applicantProjects.length - 2);
+
+            // setApplicants((applicants) => {
+            //     return [...applicants, {id: doc.id, title: doc.data().name, description: "Is former applicant: " + doc.data().isFormerApplicant + "\nIs former member: " + doc.data().isFormerMember + "\nProjects: " + applicantProjects}]
+            // });
+
             setApplicants((applicants) => {
-                return [...applicants, {id: doc.id, title: doc.data().name, description: "Is former applicant: " + doc.data().isFormerApplicant + "\nIs former member: " + doc.data().isFormerMember + "\nProjects: " + applicantProjects}]
-            });
+                return [...applicants, {id: doc.id, title: doc.data().name}]
+            })
         });
 
         const querySnapshotProjects = await getDocs(collection(db, "projects"));
+        
         querySnapshotProjects.forEach((doc) => {
             setProjects((projects) => {
                 return [
