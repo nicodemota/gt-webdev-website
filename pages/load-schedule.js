@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { Box, Button, TextField } from '@mui/material';
 import { getAuth } from 'firebase/auth';
 import firebaseApp from '../helpers/firebase';
+import { getFirestore, setDoc, getDoc, deleteDoc, doc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 
 const LoadSchedule = () => {
@@ -11,6 +12,7 @@ const LoadSchedule = () => {
     const [sheetId, setSheetId] = useState('');
     const [sheetName, setSheetName] = useState('');
     const auth = getAuth(firebaseApp);
+    const db = getFirestore(firebaseApp);
     const router = useRouter();
 
     // Authentication check
@@ -33,15 +35,37 @@ const LoadSchedule = () => {
         }
     }, [auth, router]);
 
-    const handleLinkSubmission = () => {
+    const handleLinkSubmission = async () => {
         if (!sheetId || !sheetName) {
             alert('Please enter valid Sheet ID and Sheet Name.');
             return;
         }
 
-        const sheetURL = `https://docs.google.com/spreadsheets/d/${encodeURI(sheetId)}/gviz/tq?tqx=out:csv&sheet=${encodeURI(sheetName)}`;
-        console.log('Google Sheets link:', sheetURL);
-        alert('Google Sheets link generated successfully.');
+        try {
+            const scheduleRef = doc(db, "sheets-schedule", "currentSchedule");
+
+            // Check if 'currentSchedule' already exists. If so, delete it.
+            const existingSchedule = await getDoc(scheduleRef);
+            if (existingSchedule.exists()) {
+                if (existingSchedule.data().sheetId === sheetId && existingSchedule.data().sheetName === sheetName) {
+                    alert('Schedule already in use');
+                    return;
+                }
+                await deleteDoc(scheduleRef);
+                console.log('Existing schedule deleted.');
+            }
+
+            // Save the new schedule
+            await setDoc(scheduleRef, {
+                sheetId: sheetId,
+                sheetName: sheetName,
+            });
+
+            alert('New schedule loaded successfully!');
+        } catch (error) {
+            console.error("Error storing schedule:", error);
+            alert('Error saving schedule data.');
+        }
     };
 
     return (
